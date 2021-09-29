@@ -10,15 +10,4 @@ export default createUseStyles((theme) => ({
     background: theme.backgroundPrimary,
     fontFamily: 'Roboto',
   },
-
-  '@global': {
-    '@keyframes fadeIn': {
-      from: {
-        opacity: 0,
-      },
-      to: {
-        opacity: 1,
-      },
-    },
-  },
 }))

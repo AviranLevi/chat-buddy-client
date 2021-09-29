@@ -1,6 +1,5 @@
 {
-  "homepage": "http://AviranLevi.github.io/iSearch",
-  "name": "i-search",
+  "name": "react-boiler-plate",
   "version": "0.1.0",
   "private": true,
   "dependencies": {

@@ -1,9 +1,7 @@
 import React from 'react'
 import Lottie from 'react-lottie'
 
-import animationData from '../../assets/lottieAnimations/books.json'
-
-const Spinner = () => (
+const Spinner = ({ animationData , height = 300, width = 300 }) => (
   <Lottie
     options={{
       loop: true,
@@ -13,8 +11,8 @@ const Spinner = () => (
         preserveAspectRatio: 'xMidYMid slice',
       },
     }}
-    height={300}
-    width={300}
+    height={height}
+    width={width}
   />
 )
 
