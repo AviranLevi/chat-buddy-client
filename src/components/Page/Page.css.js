@@ -5,11 +5,10 @@ export default createUseStyles((theme) => ({
     display: 'grid',
     height: '100vh',
     opacity: 1,
+    placeItems: 'center',
   },
   pageWrapper: {
     display: 'grid',
-    width: '100%',
-    height: '100%',
     placeItems: 'center',
   },
 }))

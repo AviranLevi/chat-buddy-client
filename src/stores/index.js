@@ -3,10 +3,10 @@ import thunk from 'redux-thunk'
 import { DEV } from '../config'
 
 // reducers
-import ExampleReducer from './reducers/exmaple'
+import UserReducer from './reducers/user'
 
 const rootReducer = combineReducers({
-  example: ExampleReducer,
+  user: UserReducer,
 })
 
 let enhancer

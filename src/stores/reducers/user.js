@@ -1,6 +1,8 @@
 import * as types from '../types'
 
-const initialState = {}
+const initialState = {
+  userName: '',
+}
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
