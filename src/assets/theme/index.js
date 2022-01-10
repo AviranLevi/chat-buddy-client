@@ -1,8 +1,22 @@
 const theme = {
   fontFamily: 'Roboto',
-  backgroundPrimary: '#e3e2df',
-  buttonPrimary: '#223843',
-  btnText: '#fff',
+  background: {
+    primary: '#2056BD',
+    secondary: '#F3F6FF',
+    light: '#fff',
+  },
+  button: {
+    background: {
+      primary: '#2056BD',
+    },
+    text: {
+      primary: '#fff',
+    },
+  },
+  icons: {
+    primary: '#2056BD',
+    secondary: '#B6C8EB',
+  },
 }
 
 export default theme

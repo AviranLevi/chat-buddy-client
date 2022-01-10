@@ -1,7 +1,7 @@
 import React from 'react'
 import useStyles from './TextInput.css'
 
-const TextInput = ({ value, onChange, placeholder = 'Search...', className, maxLength = 20, style = {} }) => {
+const TextInput = ({ value, onChange, placeholder = 'Search...', className, maxLength = 99, style = {} }) => {
   const classes = useStyles()
   return (
     <input

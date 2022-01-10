@@ -10,8 +10,8 @@ export default createUseStyles((theme) => ({
     cursor: 'pointer',
     transition: 'all ease-in-out .2s',
     borderRadius: '25px',
-    backgroundColor: theme.buttonPrimary,
-    color: theme.btnText,
+    backgroundColor: theme.button.background.primary,
+    color: theme.button.text.primary,
 
     '&:hover': {
       boxShadow: '0 8px 15px rgb(0 0 0 / 50%)',

@@ -7,7 +7,7 @@ export default createUseStyles((theme) => ({
     width: '100vw',
     overflowX: 'hidden',
     overflowY: 'auto',
-    background: theme.backgroundPrimary,
+    background: theme.background.primary,
     fontFamily: 'Roboto',
   },
 }))

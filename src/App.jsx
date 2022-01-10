@@ -1,7 +1,7 @@
 import React from 'react'
 import { useEffect } from 'react'
 import { useState } from 'react'
-import * as api from './api/chatBuddy'
+import * as api from './api'
 import useStyles from './App.css'
 import Routes from './routes'
 

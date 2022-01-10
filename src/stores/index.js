@@ -4,9 +4,11 @@ import { DEV } from '../config'
 
 // reducers
 import UserReducer from './reducers/user'
+import RoomReducer from './reducers/room'
 
 const rootReducer = combineReducers({
   user: UserReducer,
+  room: RoomReducer,
 })
 
 let enhancer

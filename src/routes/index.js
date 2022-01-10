@@ -8,11 +8,11 @@ const Routes = ({ user, setUser }) => (
   <Router>
     {user ? (
       <Switch>
-        <Route exact path='/'>
+        <Route path='/:room'>
           <Home user={user} />
         </Route>
         <Route path='/*'>
-          <Redirect exact to='/' />
+          <Redirect exact to='/home' />
         </Route>
       </Switch>
     ) : (

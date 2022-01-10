@@ -2,17 +2,15 @@ import * as types from '../types'
 
 const initialState = {
   id: '',
-  userName: '',
-  rooms: [],
+  users: [],
+  admin: '',
+  messages: [],
 }
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
-    case types.GET_USER:
+    case types.GET_ROOM:
       return { ...state, ...action.payload }
-
-    case types.GET_ROOMS:
-      return { ...state, rooms: action.payload }
 
     default:
       return state

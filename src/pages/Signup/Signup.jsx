@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import Page from '../../components/Page'
 import Title from '../../components/Title'
 import TextInput from '../../components/TextInput'
 import Button from '../../components/Button'
 import useStyles from './Signup.css'
-import { createUser } from '../../api/chatBuddy'
+import { createUser } from '../../api'
 
 const Signup = ({ setUser }) => {
   const classes = useStyles()
