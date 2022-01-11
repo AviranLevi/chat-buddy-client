@@ -40,9 +40,7 @@ const RoomsPannel = () => {
         </div>
       </div>
       <div className={classes.roomsWrapper}>
-        {rooms.map((room) => (
-          <Room key={room._id} room={room} onClick={() => goToRoom(room._id)} />
-        ))}
+        {rooms.length > 0 && rooms.map((room) => <Room key={room._id} room={room} onClick={() => goToRoom(room._id)} />)}
       </div>
     </div>
   )

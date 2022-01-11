@@ -13,9 +13,14 @@ const theme = {
       primary: '#fff',
     },
   },
+  text: {
+    primary: '#000',
+    light: '#fff',
+  },
   icons: {
     primary: '#2056BD',
     secondary: '#B6C8EB',
+    light: '#fff',
   },
 }
 

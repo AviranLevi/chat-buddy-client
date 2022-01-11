@@ -9,5 +9,7 @@ export default createUseStyles((theme) => ({
     overflowY: 'auto',
     background: theme.background.primary,
     fontFamily: 'Roboto',
+    display: 'grid',
+    gridTemplateColumns: '5% 95%',
   },
 }))
