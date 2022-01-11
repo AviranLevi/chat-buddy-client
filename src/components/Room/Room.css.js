@@ -10,6 +10,9 @@ export default createUseStyles((theme) => ({
     gap: '.5rem',
     alignItems: 'center',
     justifyContent: 'space-between',
+    textDecoration: 'none',
+    outline: 'none',
+    color: '#000',
 
     '&:hover': {
       background: '#ededed',

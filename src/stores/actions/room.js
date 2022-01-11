@@ -22,6 +22,15 @@ export const getRoom = (roomId) => (dispatch) => {
     .catch((err) => console.log(err))
 }
 
+export const getRoomByUniqueName = (name) => (dispatch) => {
+  api
+    .getRoomByUniqueName(name)
+    .then((res) => {
+      dispatch({ type: types.GET_ROOM, payload: res })
+    })
+    .catch((err) => console.log(err))
+}
+
 export const getRoomMessages = (roomId) => (dispatch) => {}
 
 export const inviteUserToRoom = (roomId, userId) => (dispatch) => {}

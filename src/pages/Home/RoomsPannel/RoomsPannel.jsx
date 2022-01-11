@@ -27,8 +27,6 @@ const RoomsPannel = () => {
     dispatch(actions.getRooms(id))
   }, [])
 
-  const goToRoom = (roomId) => dispatch(actions.getRoom(roomId))
-
   return (
     <div className={classes.roomsPannel}>
       <Title className={classes.roomsPannelTitle} title='Chats' fontSize='2rem' />
@@ -39,9 +37,7 @@ const RoomsPannel = () => {
           <i className='fa-solid fa-magnifying-glass'></i>
         </div>
       </div>
-      <div className={classes.roomsWrapper}>
-        {rooms.length > 0 && rooms.map((room) => <Room key={room._id} room={room} onClick={() => goToRoom(room._id)} />)}
-      </div>
+      <div className={classes.roomsWrapper}>{rooms.length > 0 && rooms.map((room) => <Room key={room._id} room={room} />)}</div>
     </div>
   )
 }

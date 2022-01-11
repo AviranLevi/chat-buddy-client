@@ -1,16 +1,17 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import Title from '../Title'
 import useStyles from './Room.css'
 
-const Room = ({ key, room, onClick }) => {
+const Room = ({ key, room }) => {
   const classes = useStyles()
-  const { name, type } = room
+  const { name, type, uniqueName } = room
 
   return (
-    <div key={key} className={classes.room} onClick={onClick}>
+    <Link to={`/room/${uniqueName}`} key={key} className={classes.room}>
       <Title title={name} className={classes.roomName} />
       <span className={classes.roomType}>{type}</span>
-    </div>
+    </Link>
   )
 }
 

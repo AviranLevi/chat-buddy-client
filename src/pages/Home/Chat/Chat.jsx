@@ -11,8 +11,8 @@ const Chat = () => {
   const classes = useStyles()
   const [messageValue, setMessageValues] = useState('')
   const { user, room } = useSelector((state) => state)
-  const { id: userId } = user
-  const { id: roomId, messages } = room
+  const { id: userId, userName } = user
+  const { id: roomId, name, messages } = room
 
   const handleOnClick = (e) => {
     e.preventDefault()
@@ -32,22 +32,24 @@ const Chat = () => {
     messageId: '1234566',
   }
   return (
-    <div className={classes.chat}>
-      <div className={classes.chatRoomTitle}>
-        <Title title='Test1' />
-      </div>
-      <div className={classes.messagesWrapper}>
-        <MessageCard data={messageData} currentUser={{ userName: 'Aviran' }} />
+    room && (
+      <div className={classes.chat}>
+        <div className={classes.chatRoomTitle}>
+          <Title title={name} />
+        </div>
+        <div className={classes.messagesWrapper}>
+          <MessageCard data={messageData} currentUser={{ userName }} />
 
-        {messages.map((data) => (
-          <MessageCard id={data.messageId} scrollRef={scrollRef} data={data} currentUser={user} />
-        ))}
+          {messages.map((data) => (
+            <MessageCard id={data.messageId} scrollRef={scrollRef} data={data} currentUser={user} />
+          ))}
+        </div>
+        <form className={classes.userMessageInput} onSubmit={handleOnClick}>
+          <InputEmoji value={messageValue} onChange={setMessageValues} placeholder='Type a message...' />
+          <Button className={classes.sendBtn} title={<i className='fa-solid fa-paper-plane'></i>} onClick={handleOnClick} />
+        </form>
       </div>
-      <form className={classes.userMessageInput} onSubmit={handleOnClick}>
-        <InputEmoji value={messageValue} onChange={setMessageValues} placeholder='Type a message...' />
-        <Button className={classes.sendBtn} title={<i className='fa-solid fa-paper-plane'></i>} onClick={handleOnClick} />
-      </form>
-    </div>
+    )
   )
 }
 

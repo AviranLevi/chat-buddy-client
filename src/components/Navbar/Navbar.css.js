@@ -16,6 +16,9 @@ export default createUseStyles((theme) => ({
     padding: '1rem',
     transition: 'ease-in-out all .2s',
     cursor: 'pointer',
+    textDecoration: 'none',
+    outline: 'none',
+    color: '#fff',
     '&:hover': {
       background: '#ededed10',
     },

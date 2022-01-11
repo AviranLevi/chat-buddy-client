@@ -2,7 +2,6 @@ import React, { useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import { useDispatch } from 'react-redux'
 import useStyles from './App.css'
-import Navbar from './components/Navbar'
 import Routes from './routes'
 import * as actions from './stores/actions'
 
@@ -17,7 +16,6 @@ const App = () => {
 
   return (
     <div className={classes.app}>
-      {user && <Navbar />}
       <Routes user={user} />
     </div>
   )

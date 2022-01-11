@@ -1,11 +1,21 @@
-import React from 'react'
-import Page from '../../components/Page'
+import React, { useEffect } from 'react'
+import { useLocation } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
 import useStyles from './Home.css'
 import RoomsPannel from './RoomsPannel'
 import Chat from './Chat'
+import Page from '../../components/Page'
+import * as actions from '../../stores/actions'
 
 const Home = () => {
   const classes = useStyles()
+  const dispatch = useDispatch()
+  const { pathname } = useLocation()
+  const roomName = pathname.split('/')[2]
+
+  useEffect(() => {
+    dispatch(actions.getRoomByUniqueName(roomName))
+  }, [])
 
   // useEffect(() => {
   //   socket.initiateSocketConnection()

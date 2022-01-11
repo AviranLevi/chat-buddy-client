@@ -3,6 +3,8 @@ import * as types from '../types'
 const initialState = {
   id: '',
   users: [],
+  name: '',
+  uniqueName: '',
   admin: '',
   messages: [],
 }

@@ -16,7 +16,7 @@ export const createRoom = async (name, user) => {
 
 export const getRooms = async (userId) => {
   try {
-    const { data } = await api.get(`/${userId}`)
+    const { data } = await api.get(`/user/${userId}`)
     return data
   } catch (error) {
     return error
@@ -26,6 +26,15 @@ export const getRooms = async (userId) => {
 export const getRoom = async (roomId) => {
   try {
     const { data } = await api.get(`/${roomId}`)
+    return data
+  } catch (error) {
+    return error
+  }
+}
+
+export const getRoomByUniqueName = async (name) => {
+  try {
+    const { data } = await api.get(`/unique/${name}`)
     return data
   } catch (error) {
     return error

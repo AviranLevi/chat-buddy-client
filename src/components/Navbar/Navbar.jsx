@@ -1,18 +1,18 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import useStyles from './Navbar.css'
 
 const Navbar = () => {
   const classes = useStyles()
-
   return (
     <div className={classes.navbar}>
-      <div className={classes.navbarIcon}>
+      <Link to='/profile' className={classes.navbarIcon}>
         <i className='fa-solid fa-user'></i>
-      </div>
+      </Link>
 
-      <div className={classes.navbarIcon}>
+      <Link to='/room/' className={classes.navbarIcon}>
         <i className='fa-solid fa-comment'></i>
-      </div>
+      </Link>
     </div>
   )
 }
