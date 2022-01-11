@@ -1,26 +1,26 @@
-import React, { useState } from 'react'
+import React from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import Page from '../../components/Page'
 import Title from '../../components/Title'
 import TextInput from '../../components/TextInput'
 import Button from '../../components/Button'
 import useStyles from './Signup.css'
-import { createUser } from '../../api'
+import ErrorMessage from '../../components/ErrorMessage'
+import * as actions from '../../stores/actions'
 
-const Signup = ({ setUser }) => {
+const Signup = () => {
   const classes = useStyles()
-  const [userValue, setUserValue] = useState('')
+  const dispatch = useDispatch()
+  const { userName, email, errors } = useSelector((state) => state.signup)
 
-  const handleOnChange = (e) => setUserValue(e.target.value)
+  const userNameOnChange = (e) => dispatch(actions.userNameOnChange(e.target.value))
+  const emailOnChange = (e) => dispatch(actions.emailOnChange(e.target.value))
 
-  const handleOnClick = async (e) => {
+  const handleOnClick = (e) => {
     e.preventDefault()
-    const userCreated = await createUser(userValue)
-    if (userCreated) {
-      const { userName, _id: id } = userCreated
-      localStorage.setItem('userId', id)
-      setUser(userName)
-    }
+    dispatch(actions.createUser(userName, email))
   }
+
   return (
     <Page className={classes.signupPage}>
       <div className={classes.signupPageTitles}>
@@ -28,7 +28,11 @@ const Signup = ({ setUser }) => {
         <Title fontSize='1rem' title='Please signup to continue!' fontWeight='normal' />
       </div>
       <form className={classes.signup} onSubmit={handleOnClick}>
-        <TextInput placeholder='Username...' value={userValue} onChange={handleOnChange} />
+        <TextInput placeholder='Username...' value={userName} onChange={userNameOnChange} />
+        {errors.userName && <ErrorMessage message='*Must contain letters & numbers (optional) only!' />}
+        <TextInput placeholder='Email...' value={email} onChange={emailOnChange} />
+        {errors.email && <ErrorMessage message='*Please insert valid email' />}
+
         <Button title='Create User' onClick={handleOnClick} />
       </form>
     </Page>

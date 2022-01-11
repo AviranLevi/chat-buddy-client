@@ -34,7 +34,6 @@ export default createUseStyles((theme) => ({
   roomsWrapper: {
     display: 'grid',
     padding: '0 1rem',
-    gap: '.5rem',
     overFlow: 'hidden',
   },
 }))

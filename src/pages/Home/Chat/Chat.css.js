@@ -5,13 +5,13 @@ export default createUseStyles((theme) => ({
     display: 'grid',
     height: '100%',
     width: '100%',
-    gridTemplateRows: '10% 80% 10%',
+    gridTemplateRows: '10% 83% 7%',
     placeItems: 'center',
   },
   chatRoomTitle: {
     display: 'grid',
     placeItems: 'center',
-    width: '90%',
+    width: '95%',
     height: '100%',
     borderBottom: '1px solid #ededed',
   },
@@ -20,7 +20,7 @@ export default createUseStyles((theme) => ({
     display: 'grid',
     alignItems: 'end',
     maxHeight: '100%',
-    width: '97%',
+    width: '95%',
     overflow: 'scroll',
     gap: 'rem',
     margin: '1rem 0',
@@ -28,8 +28,12 @@ export default createUseStyles((theme) => ({
   },
 
   userMessageInput: {
-    width: '100%',
+    width: '95%',
+    display: 'grid',
+    gridTemplateColumns: '92% 8%',
     alginSelf: 'end',
   },
-  sendBtn: {},
+  sendBtn: {
+    padding: '0',
+  },
 }))

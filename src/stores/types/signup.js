@@ -1,0 +1,4 @@
+export const USER_NAME_ON_CHANGE = 'USER_NAME_ON_CHANGE'
+export const EMAIL_ON_CHANGE = 'EMAIL_ON_CHANGE'
+export const USER_NAME_ERR = 'USER_NAME_ERR'
+export const EMAIL_ERR = 'EMAIL_ERR'

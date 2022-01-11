@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-d
 import Home from '../pages/Home'
 import Signup from '../pages/Signup'
 
-const Routes = ({ user, setUser }) => (
+const Routes = ({ user }) => (
   <Router>
     {user ? (
       <Switch>
@@ -18,7 +18,7 @@ const Routes = ({ user, setUser }) => (
     ) : (
       <Switch>
         <Route exact path='/signup'>
-          <Signup setUser={setUser} />
+          <Signup />
         </Route>
         <Route path='/'>
           <Redirect exact to='/signup' />

@@ -1,11 +1,11 @@
 import React, { useRef, useState } from 'react'
 import Button from '../../../components/Button'
-import TextInput from '../../../components/TextInput'
 import useStyles from './Chat.css'
-import * as socket from '../../../socket'
 import { useSelector } from 'react-redux'
 import MessageCard from '../../../components/MessageCard'
 import Title from '../../../components/Title'
+import InputEmoji from 'react-input-emoji'
+import * as socket from '../../../socket'
 
 const Chat = () => {
   const classes = useStyles()
@@ -13,8 +13,6 @@ const Chat = () => {
   const { user, room } = useSelector((state) => state)
   const { id: userId } = user
   const { id: roomId, messages } = room
-
-  const handleOnChange = (e) => setMessageValues(e.target.value)
 
   const handleOnClick = (e) => {
     e.preventDefault()
@@ -42,12 +40,12 @@ const Chat = () => {
         <MessageCard data={messageData} currentUser={{ userName: 'Aviran' }} />
 
         {messages.map((data) => (
-          <MessageCard scrollRef={scrollRef} data={data} currentUser={user} />
+          <MessageCard id={data.messageId} scrollRef={scrollRef} data={data} currentUser={user} />
         ))}
       </div>
       <form className={classes.userMessageInput} onSubmit={handleOnClick}>
-        <TextInput placeholder='Type Message...' value={messageValue} onChange={handleOnChange} />
-        <Button className={classes.sendBtn} title={<i class='fa-solid fa-paper-plane'></i>} onClick={handleOnClick} />
+        <InputEmoji value={messageValue} onChange={setMessageValues} placeholder='Type a message...' />
+        <Button className={classes.sendBtn} title={<i className='fa-solid fa-paper-plane'></i>} onClick={handleOnClick} />
       </form>
     </div>
   )

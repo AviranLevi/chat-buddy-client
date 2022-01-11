@@ -5,9 +5,9 @@ const api = axios.create({
   baseURL: `${serverURL}/room`,
 })
 
-export const createRoom = async (userName, email) => {
+export const createRoom = async (name, user) => {
   try {
-    const { data } = await api.post('/', { userName, email })
+    const { data } = await api.post('/', { name, user })
     return data
   } catch (error) {
     return error

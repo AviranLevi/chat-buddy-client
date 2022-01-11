@@ -1,31 +1,22 @@
-import React from 'react'
-import { useEffect } from 'react'
-import { useState } from 'react'
-import * as api from './api'
+import React, { useEffect } from 'react'
+import { useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import useStyles from './App.css'
 import Routes from './routes'
+import * as actions from './stores/actions'
 
 const App = () => {
   const classes = useStyles()
-  const [user, setUser] = useState({})
+  const dispatch = useDispatch()
+  const { user } = useSelector((state) => state)
 
   useEffect(() => {
-    //get user
-    async function getUser() {
-      const userId = localStorage.getItem('userId')
-      const userAlreadyExists = await api.getUser(userId)
-
-      if (userAlreadyExists) {
-        const { userName } = userAlreadyExists
-        setUser({ userName, userId })
-      }
-    }
-    getUser()
+    dispatch(actions.getUser())
   }, [])
 
   return (
     <div className={classes.app}>
-      <Routes user={user} setUser={setUser} />
+      <Routes user={user} />
     </div>
   )
 }
