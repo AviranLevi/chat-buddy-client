@@ -1,12 +1,13 @@
 import React from 'react'
 import Lottie from 'react-lottie'
+import * as PaperPlaneJSON from '../../assets/lottie/loading-paper-plane.json'
 
-const Spinner = ({ animationData , height = 300, width = 300 }) => (
+const PaperPlaneSpinner = ({ height = 300, width = 300 }) => (
   <Lottie
     options={{
       loop: true,
       autoplay: true,
-      animationData,
+      animationData: PaperPlaneJSON,
       rendererSettings: {
         preserveAspectRatio: 'xMidYMid slice',
       },
@@ -16,4 +17,4 @@ const Spinner = ({ animationData , height = 300, width = 300 }) => (
   />
 )
 
-export default Spinner
+export default PaperPlaneSpinner

@@ -11,8 +11,8 @@ const Routes = ({ user }) =>
     <Router>
       <Navbar />
       <Switch>
-        <Route exact path='/room/:room'>
-          <Home user={user} />
+        <Route path='/room/:room'>
+          <Home />
         </Route>
         <Route exact path='/profile'>
           <Profile />

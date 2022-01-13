@@ -3,12 +3,11 @@ import { createUseStyles } from 'react-jss'
 export default createUseStyles((theme) => ({
   roomsPannel: {
     height: '100%',
-    width: 'calc(100% - 3rem)',
+    width: '100%',
     background: theme.background.light,
     display: 'flex',
     flexDirection: 'column',
     borderRadius: '25px',
-    padding: '0 1.5rem',
   },
   roomsPannelTitle: {
     padding: '2rem 0 1rem',
@@ -16,7 +15,6 @@ export default createUseStyles((theme) => ({
 
   roomsWrapper: {
     display: 'grid',
-    padding: '0 1rem',
     overFlow: 'hidden',
   },
 }))

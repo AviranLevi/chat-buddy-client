@@ -1,10 +1,10 @@
 import * as types from '../types'
 import * as api from '../../api'
 
-export const createRoom = (roomName) => (dispatch, getState) => {
+export const createRoom = (name, type, users) => (dispatch, getState) => {
   const { id } = getState().user
   api
-    .createRoom(roomName, id)
+    .createRoom(name, type, users, id)
     .then((res) => {
       console.log(res)
       //get rooms

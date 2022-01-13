@@ -1,19 +1,13 @@
 import * as types from '../types'
 
 const initialState = {
-  id: '',
-  users: [],
-  name: '',
-  uniqueName: '',
-  admin: '',
-  type: '',
-  messages: [],
+  createRoomTogglePopup: false,
 }
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
-    case types.GET_ROOM:
-      return { ...state, ...action.payload }
+    case types.CREATE_ROOM_TOGGLE_POPUP:
+      return { ...state, createRoomTogglePopup: action.payload }
 
     default:
       return state

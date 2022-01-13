@@ -6,11 +6,13 @@ import { DEV } from '../config'
 import UserReducer from './reducers/user'
 import RoomReducer from './reducers/room'
 import SignupReducer from './reducers/signup'
+import FeaturesReducer from './reducers/features'
 
 const rootReducer = combineReducers({
   user: UserReducer,
   room: RoomReducer,
   signup: SignupReducer,
+  features: FeaturesReducer,
 })
 
 let enhancer
