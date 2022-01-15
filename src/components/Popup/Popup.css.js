@@ -4,12 +4,21 @@ export default createUseStyles((theme) => ({
   popup: {
     height: '100vh',
     width: '100vw',
-    background: 'rgba(0, 0, 0, 0.6)',
     position: 'fixed',
     display: 'grid',
     placeItems: 'center',
     top: '0',
     left: '0',
+    zIndex: '100',
+  },
+
+  popupBackground: {
+    position: 'absolute',
+    top: '0',
+    left: '0',
+    background: 'rgba(0, 0, 0, 0.6)',
+    height: '100%',
+    width: '100%',
   },
 
   popupWrapper: {

@@ -1,5 +1,5 @@
-import React, { useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import React from 'react'
+import { useDispatch } from 'react-redux'
 import Title from '../../../../components/Title'
 import useStyles from './CreateRoom.css'
 import * as actions from '../../../../stores/actions'
@@ -8,8 +8,10 @@ const CreateRoom = () => {
   const classes = useStyles()
   const dispatch = useDispatch()
 
+  const openCreatePopup = () => dispatch(actions.createRoomTogglePopup(true))
+
   return (
-    <div className={classes.createRoom}>
+    <div className={classes.createRoom} onClick={openCreatePopup}>
       <div className={classes.createRoomIcon}>
         <i className='fa-solid fa-plus'></i>
       </div>

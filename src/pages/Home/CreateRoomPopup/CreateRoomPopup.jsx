@@ -37,8 +37,10 @@ const CreateRoomPopup = () => {
     color: '#fff',
   }
 
+  const closePopup = () => dispatch(actions.createRoomTogglePopup(false))
+
   return (
-    <Popup>
+    <Popup closeOnClick={closePopup}>
       <div className={classes.createRoomPopup}>
         <Title title='Create New Chat' fontSize='2rem' className={classes.createRoomPopupTitle} />
 
@@ -65,9 +67,11 @@ const CreateRoomPopup = () => {
           />
         </div>
 
+        <div className={classes.roomUsers}>{/* TODO - add users input */}</div>
+
         <div className={classes.formSelection}>
           <Button title='Create' className={classes.createBtn} onClick={createRoomOnClick} />
-          <Button title='Cancel' className={classes.cancelBtn} />
+          <Button title='Cancel' className={classes.cancelBtn} onClick={closePopup} />
         </div>
       </div>
     </Popup>

@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { useLocation } from 'react-router-dom'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import useStyles from './Home.css'
 import RoomsPannel from './RoomsPannel'
 import Chat from './Chat'
@@ -13,6 +13,8 @@ const Home = () => {
   const dispatch = useDispatch()
   const { pathname } = useLocation()
   const roomName = pathname.split('/')[2]
+  const { features } = useSelector((state) => state)
+  const { createRoomTogglePopup } = features
 
   useEffect(() => {
     dispatch(actions.getRoomByUniqueName(roomName))
@@ -50,7 +52,7 @@ const Home = () => {
     <Page className={classes.home}>
       <RoomsPannel />
       <Chat />
-      <CreateRoomPopup />
+      {createRoomTogglePopup && <CreateRoomPopup />}
     </Page>
   )
 }
