@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react'
+import React, { useRef, useState, useEffect } from 'react'
 import Button from '../../../components/Button'
 import useStyles from './Chat.css'
 import { useSelector } from 'react-redux'
@@ -26,6 +26,17 @@ const Chat = () => {
     socket.sendMessage(socketData, user)
   }
 
+  useEffect(() => {
+    socket.initiateSocketConnection()
+
+    // if (userId && roomId) {
+    //   socket.subscribeToMessages(user, room)
+    // }
+    return () => {
+      socket.disconnectSocket()
+    }
+  }, [user])
+
   const scrollRef = useRef()
 
   return (
@@ -36,7 +47,7 @@ const Chat = () => {
         </div>
         <div className={classes.messagesWrapper}>
           {messages.length > 0 ? (
-            messages.map((data) => <MessageCard id={data.messageId} scrollRef={scrollRef} data={data} currentUser={user} />)
+            messages.map((data) => <MessageCard key={data._id} id={data._id} scrollRef={scrollRef} data={data} currentUser={user} />)
           ) : (
             <NothingToDisplay />
           )}

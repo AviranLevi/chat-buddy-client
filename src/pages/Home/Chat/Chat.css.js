@@ -22,7 +22,7 @@ export default createUseStyles((theme) => ({
     maxHeight: '100%',
     width: '95%',
     overflow: 'scroll',
-    gap: 'rem',
+    gap: '.5rem',
     margin: '1rem 0',
     alignSelf: 'start',
   },

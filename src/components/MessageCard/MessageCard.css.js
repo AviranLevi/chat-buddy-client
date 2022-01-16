@@ -10,6 +10,7 @@ export default createUseStyles((theme) => ({
     justifySelf: ({ userName, currentUser }) => (userName === currentUser.userName ? 'end' : 'start'),
     display: 'grid',
     gap: '.5rem',
+    color: '#fff',
   },
 
   message: {
@@ -17,14 +18,14 @@ export default createUseStyles((theme) => ({
   },
 
   user: {
-    display: 'flex',
-    background: theme.background.primary,
+    display: ({ userName, currentUser }) => (userName !== currentUser.userName ? 'flex' : 'none'),
+    background: ({ userName, currentUser }) => userName !== currentUser.userName && theme.background.primary,
     width: 'fit-content',
     padding: '.5rem',
     borderRadius: '25px',
   },
   userName: {
-    color: ({ userName, currentUser }) => (userName === currentUser.userName ? '#000' : '#fff'),
+    color: ({ userName, currentUser }) => userName === currentUser.userName && '#fff',
     fontSize: '.8rem',
     fontWeight: '6000',
   },

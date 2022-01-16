@@ -12,15 +12,13 @@ export const disconnectSocket = () => {
   if (socket) socket.disconnect()
 }
 
-export const subscribeToMessages = (cb) => {
+export const subscribeToMessages = (user, room) => {
   if (socket) {
-    socket.on('received', (data) => {
-      return cb(null, data)
-    })
+    socket.emit('join', (user, room))
   }
 }
 export const sendMessage = (data, user) => {
   if (socket) {
-    socket.emit('chatMessage', data)
+    socket.emit('roomMessage', data)
   }
 }
