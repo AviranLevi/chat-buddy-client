@@ -11,8 +11,9 @@ export const getUser = () => (dispatch) => {
     .catch((err) => console.log(err))
 }
 
-export const getRooms = () => (dispatch, getState) => {
+export const getRoomsByUser = () => (dispatch, getState) => {
   const { id } = getState().user
+
   api
     .getRooms(id)
     .then((res) => {

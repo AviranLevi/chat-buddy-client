@@ -10,16 +10,18 @@ const RoomsList = () => {
   const dispatch = useDispatch()
   const { user } = useSelector((state) => state)
 
-  const { id, rooms } = user
+  const { id: userId, rooms } = user
 
   useEffect(() => {
     //get rooms
-    dispatch(actions.getRooms(id))
-  }, [])
+    if (userId) {
+      dispatch(actions.getRoomsByUser(userId))
+    }
+  }, [userId])
 
   return (
     <div className={classes.roomsWrapper}>
-      {rooms.length > 0 ? rooms.map((room) => <Room key={room._id} room={room} />) : <CircleSpinner />}
+      {rooms && rooms.length > 0 ? rooms.map((room) => <Room key={room._id} room={room} />) : <CircleSpinner />}
     </div>
   )
 }

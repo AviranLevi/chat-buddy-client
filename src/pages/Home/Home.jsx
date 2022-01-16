@@ -17,8 +17,10 @@ const Home = () => {
   const { createRoomTogglePopup } = features
 
   useEffect(() => {
-    dispatch(actions.getRoomByUniqueName(roomName))
-  }, [])
+    if (roomName) {
+      dispatch(actions.getRoomByUniqueName(roomName))
+    }
+  }, [roomName])
 
   // useEffect(() => {
   //   socket.initiateSocketConnection()

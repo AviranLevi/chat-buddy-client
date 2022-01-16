@@ -6,12 +6,13 @@ import MessageCard from '../../../components/MessageCard'
 import Title from '../../../components/Title'
 import InputEmoji from 'react-input-emoji'
 import * as socket from '../../../socket'
+import NothingToDisplay from '../../../components/NothingToDisplay'
 
 const Chat = () => {
   const classes = useStyles()
   const [messageValue, setMessageValues] = useState('')
   const { user, room } = useSelector((state) => state)
-  const { id: userId, userName } = user
+  const { id: userId } = user
   const { id: roomId, name, messages } = room
 
   const handleOnClick = (e) => {
@@ -26,11 +27,7 @@ const Chat = () => {
   }
 
   const scrollRef = useRef()
-  const messageData = {
-    user: '123',
-    message: 'test message',
-    messageId: '1234566',
-  }
+
   return (
     room && (
       <div className={classes.chat}>
@@ -38,11 +35,11 @@ const Chat = () => {
           <Title title={name} />
         </div>
         <div className={classes.messagesWrapper}>
-          <MessageCard data={messageData} currentUser={{ userName }} />
-
-          {messages.map((data) => (
-            <MessageCard id={data.messageId} scrollRef={scrollRef} data={data} currentUser={user} />
-          ))}
+          {messages.length > 0 ? (
+            messages.map((data) => <MessageCard id={data.messageId} scrollRef={scrollRef} data={data} currentUser={user} />)
+          ) : (
+            <NothingToDisplay />
+          )}
         </div>
         <form className={classes.userMessageInput} onSubmit={handleOnClick}>
           <InputEmoji value={messageValue} onChange={setMessageValues} placeholder='Type a message...' />

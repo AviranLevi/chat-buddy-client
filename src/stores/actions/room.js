@@ -1,5 +1,6 @@
 import * as types from '../types'
 import * as api from '../../api'
+import { getRoomsByUser } from './user'
 
 export const createRoom = (name, type, users) => (dispatch, getState) => {
   const { id } = getState().user
@@ -8,6 +9,7 @@ export const createRoom = (name, type, users) => (dispatch, getState) => {
     .then((res) => {
       console.log(res)
       //get rooms
+      dispatch(getRoomsByUser())
     })
     .catch((err) => console.log(err))
 }
@@ -47,3 +49,8 @@ export const deleteRoom = (roomId) => (dispatch) => {
     })
     .catch((err) => console.log(err))
 }
+
+export const roomNotFound = (bool) => ({
+  type: types.ROOM_NOT_FOUND,
+  payload: bool,
+})

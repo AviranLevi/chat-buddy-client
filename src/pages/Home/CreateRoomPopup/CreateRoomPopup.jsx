@@ -8,36 +8,51 @@ import TextInput from '../../../components/TextInput'
 import Button from '../../../components/Button'
 import { roomTypes } from '../../../consts'
 import ErrorMessage from '../../../components/ErrorMessage'
+import * as utils from '../../../utils'
 
 const CreateRoomPopup = () => {
   const classes = useStyles()
   const dispatch = useDispatch()
   const { user } = useSelector((state) => state)
+  const { email } = user
 
   const [name, setName] = useState('')
   const [type, setType] = useState(roomTypes.private)
-  const [users, setUsers] = useState([])
+  const [users, setUsers] = useState([email])
+  const [addUserValue, setAddUserValue] = useState('')
   const [err, setErr] = useState(false)
+
   const roomNameOnChange = (e) => setName(e.target.value)
+  const setPrivate = () => setType(roomTypes.private)
+  const setPublic = () => setType(roomTypes.public)
 
   const createRoomOnClick = () => {
     if (name) {
       setErr(false)
+      dispatch(actions.createRoomTogglePopup(false))
       dispatch(actions.createRoom(name, type, users))
     } else {
       setErr(true)
     }
   }
 
-  const setPrivate = () => setType(roomTypes.private)
-  const setPublic = () => setType(roomTypes.public)
+  const addToUsers = (e) => {
+    e.preventDefault()
+    const validUserEmail = utils.validateEmail(addUserValue)
 
-  const typeSelectedStyle = {
+    if (validUserEmail) {
+      setUsers((prev) => [...prev, addUserValue])
+    }
+  }
+
+  const addUserOnChange = (e) => setAddUserValue(e.target.value)
+
+  const closePopup = () => dispatch(actions.createRoomTogglePopup(false))
+
+  const selectedTypeStyle = {
     background: '#2056BD',
     color: '#fff',
   }
-
-  const closePopup = () => dispatch(actions.createRoomTogglePopup(false))
 
   return (
     <Popup closeOnClick={closePopup}>
@@ -57,17 +72,23 @@ const CreateRoomPopup = () => {
             title={roomTypes.private}
             className={classes.roomTypeBtn}
             onClick={setPrivate}
-            style={type === roomTypes.private ? typeSelectedStyle : {}}
+            style={type === roomTypes.private ? selectedTypeStyle : {}}
           />
           <Button
             title={roomTypes.public}
             className={classes.roomTypeBtn}
             onClick={setPublic}
-            style={type === roomTypes.public ? typeSelectedStyle : {}}
+            style={type === roomTypes.public ? selectedTypeStyle : {}}
           />
         </div>
 
-        <div className={classes.roomUsers}>{/* TODO - add users input */}</div>
+        <div className={classes.roomUsers}>
+          <form onSubmit={addToUsers}>
+            <Title title='Invite:' />
+            <TextInput value={addUserValue} onChange={addUserOnChange} placeholder='Invite by email..' />
+          </form>
+          <div className={classes.inviteUsersDisplay}>{users.map((email, index) => index !== 0 && <span>{email}</span>)}</div>
+        </div>
 
         <div className={classes.formSelection}>
           <Button title='Create' className={classes.createBtn} onClick={createRoomOnClick} />

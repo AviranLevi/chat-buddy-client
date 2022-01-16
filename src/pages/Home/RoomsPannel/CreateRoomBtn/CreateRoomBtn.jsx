@@ -1,10 +1,10 @@
 import React from 'react'
 import { useDispatch } from 'react-redux'
 import Title from '../../../../components/Title'
-import useStyles from './CreateRoom.css'
+import useStyles from './CreateRoomBtn.css'
 import * as actions from '../../../../stores/actions'
 
-const CreateRoom = () => {
+const CreateRoomBtn = () => {
   const classes = useStyles()
   const dispatch = useDispatch()
 
@@ -20,4 +20,4 @@ const CreateRoom = () => {
   )
 }
 
-export default CreateRoom
+export default CreateRoomBtn

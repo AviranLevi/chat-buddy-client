@@ -1,5 +1,5 @@
 import React from 'react'
-import CreateRoom from './CreateRoom'
+import CreateRoomBtn from './CreateRoomBtn'
 import RoomSearch from './RoomSearch'
 import RoomsList from './RoomsList'
 import Title from '../../../components/Title'
@@ -10,7 +10,7 @@ const RoomsPannel = () => {
 
   return (
     <div className={classes.roomsPannel}>
-      <CreateRoom />
+      <CreateRoomBtn />
       <Title className={classes.roomsPannelTitle} title='Chats' fontSize='2rem' />
       <RoomSearch />
       <RoomsList />
