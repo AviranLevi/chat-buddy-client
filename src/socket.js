@@ -22,3 +22,11 @@ export const sendMessage = (data, user) => {
     socket.emit('roomMessage', data)
   }
 }
+
+export const recivedMessages = (cb) => {
+  if (socket) {
+    socket.on('recivedMessages', (data) => {
+      return cb(data)
+    })
+  }
+}

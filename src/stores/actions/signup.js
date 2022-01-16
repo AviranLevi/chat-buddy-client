@@ -41,7 +41,6 @@ export const createUser = (userName, email) => (dispatch) => {
     api
       .createUser({ userName, email })
       .then((res) => {
-        console.log(res)
         window.reload()
       })
       .catch((err) => console.log(err))

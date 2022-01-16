@@ -1,22 +1,24 @@
 import React, { useRef, useState, useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import InputEmoji from 'react-input-emoji'
 import Button from '../../../components/Button'
-import useStyles from './Chat.css'
-import { useSelector } from 'react-redux'
 import MessageCard from '../../../components/MessageCard'
 import Title from '../../../components/Title'
-import InputEmoji from 'react-input-emoji'
-import * as socket from '../../../socket'
 import NothingToDisplay from '../../../components/NothingToDisplay'
+import * as socket from '../../../socket'
+import * as actions from '../../../stores/actions'
+import useStyles from './Chat.css'
 
 const Chat = () => {
   const classes = useStyles()
   const [messageValue, setMessageValues] = useState('')
+  const dispatch = useDispatch()
   const { user, room } = useSelector((state) => state)
   const { id: userId } = user
   const { id: roomId, name, messages } = room
+  const scrollRef = useRef()
 
-  const handleOnClick = (e) => {
-    e.preventDefault()
+  const handleOnClick = () => {
     const socketData = {
       message: messageValue,
       user: userId,
@@ -24,20 +26,20 @@ const Chat = () => {
     }
     setMessageValues('')
     socket.sendMessage(socketData, user)
+    socket.recivedMessages((data) => dispatch(actions.getRoomMessagesFromSocket(data)))
   }
 
   useEffect(() => {
     socket.initiateSocketConnection()
-
-    // if (userId && roomId) {
-    //   socket.subscribeToMessages(user, room)
-    // }
     return () => {
       socket.disconnectSocket()
     }
   }, [user])
 
-  const scrollRef = useRef()
+  useEffect(() => {
+    //scrolling to new message
+    scrollRef.current?.scrollIntoView({ behavior: 'smooth' })
+  }, [messages])
 
   return (
     room && (
@@ -46,16 +48,16 @@ const Chat = () => {
           <Title title={name} />
         </div>
         <div className={classes.messagesWrapper}>
-          {messages.length > 0 ? (
-            messages.map((data) => <MessageCard key={data._id} id={data._id} scrollRef={scrollRef} data={data} currentUser={user} />)
+          {messages && messages.length > 0 ? (
+            messages.map((data) => <MessageCard key={data._id} scrollRef={scrollRef} data={data} currentUser={user} />)
           ) : (
             <NothingToDisplay />
           )}
         </div>
-        <form className={classes.userMessageInput} onSubmit={handleOnClick}>
-          <InputEmoji value={messageValue} onChange={setMessageValues} placeholder='Type a message...' />
+        <div className={classes.userMessageInput}>
+          <InputEmoji value={messageValue} onChange={setMessageValues} onEnter={handleOnClick} placeholder='Type a message...' />
           <Button className={classes.sendBtn} title={<i className='fa-solid fa-paper-plane'></i>} onClick={handleOnClick} />
-        </form>
+        </div>
       </div>
     )
   )

@@ -19,11 +19,11 @@ export default createUseStyles((theme) => ({
   messagesWrapper: {
     display: 'grid',
     alignItems: 'end',
-    maxHeight: '100%',
-    width: '95%',
+    maxHeight: 'calc(77vh - 2rem)',
+    width: 'calc(100% - 2rem)',
     overflow: 'scroll',
     gap: '.5rem',
-    margin: '1rem 0',
+    padding: '1rem',
     alignSelf: 'start',
   },
 
