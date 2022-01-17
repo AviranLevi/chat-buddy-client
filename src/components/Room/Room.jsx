@@ -8,7 +8,7 @@ const Room = ({ key, room }) => {
   const { name, type, uniqueName } = room
 
   return (
-    <Link to={`/room/${uniqueName}`} key={key} className={classes.room}>
+    <Link to={`/${uniqueName}`} key={key} className={classes.room}>
       <Title title={name} className={classes.roomName} />
       <span className={classes.roomType}>{type}</span>
     </Link>

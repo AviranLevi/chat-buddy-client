@@ -7,14 +7,15 @@ import Chat from './Chat'
 import Page from '../../components/Page'
 import * as actions from '../../stores/actions'
 import CreateRoomPopup from './CreateRoomPopup'
+import Profile from './Profile'
 
 const Home = () => {
   const classes = useStyles()
   const dispatch = useDispatch()
   const { pathname } = useLocation()
-  const roomName = pathname.split('/')[2]
+  const roomName = pathname.split('/')[1]
   const { features } = useSelector((state) => state)
-  const { createRoomTogglePopup } = features
+  const { createRoomTogglePopup, toggleProfile, toggleRoomList } = features
 
   useEffect(() => {
     if (roomName) {
@@ -24,7 +25,8 @@ const Home = () => {
 
   return (
     <Page className={classes.home}>
-      <RoomsPannel />
+      {toggleRoomList && <RoomsPannel />}
+      {toggleProfile && <Profile />}
       <Chat />
       {createRoomTogglePopup && <CreateRoomPopup />}
     </Page>

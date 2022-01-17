@@ -3,22 +3,18 @@ import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-d
 //pages
 import Home from '../pages/Home'
 import Signup from '../pages/Signup'
-import Navbar from '../components/Navbar'
-import Profile from '../pages/Profile'
+import Navbar from '../pages/Navbar'
 
 const Routes = ({ user }) =>
   user ? (
     <Router>
       <Navbar />
       <Switch>
-        <Route path='/room/:room'>
+        <Route path='/:room?'>
           <Home />
         </Route>
-        <Route exact path='/profile'>
-          <Profile />
-        </Route>
         <Route path='/*'>
-          <Redirect exact to='/room' />
+          <Redirect exact to='/' />
         </Route>
       </Switch>
     </Router>
