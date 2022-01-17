@@ -1,13 +1,13 @@
 import React, { useEffect } from 'react'
 import { useLocation } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
-import useStyles from './Home.css'
 import RoomsPannel from './RoomsPannel'
 import Chat from './Chat'
+import Profile from './Profile'
+import CreateRoomPopup from './CreateRoomPopup'
 import Page from '../../components/Page'
 import * as actions from '../../stores/actions'
-import CreateRoomPopup from './CreateRoomPopup'
-import Profile from './Profile'
+import useStyles from './Home.css'
 
 const Home = () => {
   const classes = useStyles()

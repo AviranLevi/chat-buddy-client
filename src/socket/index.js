@@ -23,10 +23,20 @@ export const sendMessage = (data, user) => {
   }
 }
 
+export const sendQuestionToChatBot = (data) => {
+  if (socket) {
+    socket.emit('sendQuestion', data)
+  }
+}
+
+export const recievedAnswerFromChatBot = (cb) => {
+  if (socket) {
+    socket.on('recievedChatBotMessage', (data) => cb(data))
+  }
+}
+
 export const recivedMessages = (cb) => {
   if (socket) {
-    socket.on('recivedMessages', (data) => {
-      return cb(data)
-    })
+    socket.on('recivedMessages', (data) => cb(data))
   }
 }
