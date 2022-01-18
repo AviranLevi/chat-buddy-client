@@ -1,6 +1,5 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import Page from '../../components/Page'
 import Title from '../../components/Title'
 import TextInput from '../../components/TextInput'
 import Button from '../../components/Button'
@@ -22,7 +21,7 @@ const Signup = () => {
   }
 
   return (
-    <Page className={classes.signupPage}>
+    <div className={classes.signupPage}>
       <div className={classes.signupPageTitles}>
         <Title title='Chat Buddies!' fontSize='2.5rem' />
         <Title fontSize='1rem' title='Please signup to continue!' fontWeight='normal' />
@@ -35,7 +34,7 @@ const Signup = () => {
 
         <Button title='Create User' onClick={handleOnClick} />
       </form>
-    </Page>
+    </div>
   )
 }
 

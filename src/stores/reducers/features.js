@@ -4,6 +4,8 @@ const initialState = {
   createRoomTogglePopup: false,
   toggleProfile: false,
   toggleRoomList: true,
+  talkWithMax: true,
+  talkWithPeople: false,
 }
 
 const reducer = (state = initialState, action) => {
@@ -16,6 +18,12 @@ const reducer = (state = initialState, action) => {
 
     case types.SHOW_PROFILE:
       return { ...state, toggleProfile: action.payload }
+
+    case types.TALK_WITH_MAX:
+      return { ...state, talkWithMax: action.payload }
+
+    case types.TALK_WITH_PEOPLE:
+      return { ...state, talkWithPeople: action.payload }
 
     default:
       return state

@@ -14,3 +14,13 @@ export const toggleRoomList = (bool) => ({
   type: types.SHOW_ROOM_LIST,
   payload: bool,
 })
+
+export const talkWithMax = (bool) => ({
+  type: types.TALK_WITH_MAX,
+  payload: bool,
+})
+
+export const talkWithPeople = (bool) => ({
+  type: types.TALK_WITH_PEOPLE,
+  payload: bool,
+})

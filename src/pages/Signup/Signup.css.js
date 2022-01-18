@@ -2,9 +2,15 @@ import { createUseStyles } from 'react-jss'
 
 export default createUseStyles((theme) => ({
   signupPage: {
-    gridTemplateRows: '20% 80%',
+    display: 'grid',
     placeItems: 'center',
-    height: '90%',
+    width: 'calc(100% - 2rem)',
+    height: 'calc(100% - 2rem)',
+    background: theme.background.secondary,
+    borderRadius: '25px',
+    gridColumn: '1/3',
+    alignSelf: 'center',
+    justifySelf: 'center',
   },
   signupPageTitles: {
     display: 'grid',
@@ -15,6 +21,7 @@ export default createUseStyles((theme) => ({
     display: 'grid',
     gap: '1rem',
     alignSelf: 'start',
+    width: '30%',
   },
   signupTitle: {
     justifySelf: 'start',

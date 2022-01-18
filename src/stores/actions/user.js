@@ -13,7 +13,6 @@ export const getUser = () => (dispatch) => {
 
 export const getRoomsByUser = () => (dispatch, getState) => {
   const { id } = getState().user
-
   api
     .getRooms(id)
     .then((res) => {

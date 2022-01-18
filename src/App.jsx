@@ -13,7 +13,7 @@ const App = () => {
   useEffect(() => {
     dispatch(actions.getUser())
   }, [])
-
+  console.log({ user })
   return (
     <div className={classes.app}>
       <Routes user={user} />

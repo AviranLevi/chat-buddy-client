@@ -6,11 +6,11 @@ import Signup from '../pages/Signup'
 import Navbar from '../pages/Navbar'
 
 const Routes = ({ user }) =>
-  user ? (
+  user.id ? (
     <Router>
       <Navbar />
       <Switch>
-        <Route path='/:room?'>
+        <Route path='/:chat?'>
           <Home />
         </Route>
         <Route path='/*'>
