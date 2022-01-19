@@ -10,7 +10,7 @@ export default createUseStyles((theme) => ({
     justifySelf: ({ userName, currentUser }) => (userName === currentUser.userName ? 'end' : 'start'),
     display: 'grid',
     gap: '.5rem',
-    color: '#fff',
+    color: ({ userName, currentUser }) => (userName === currentUser.userName ? '#fff' : '#000'),
   },
 
   message: {
@@ -25,7 +25,7 @@ export default createUseStyles((theme) => ({
     borderRadius: '25px',
   },
   userName: {
-    color: ({ userName, currentUser }) => userName === currentUser.userName && '#fff',
+    color: '#fff',
     fontSize: '.8rem',
     fontWeight: '6000',
   },

@@ -4,32 +4,43 @@ let socket
 
 export const initiateSocketConnection = () => {
   socket = io('ws://localhost:8900')
-  console.log(`Connecting socket...`)
 }
 
 export const disconnectSocket = () => {
-  console.log('Disconnecting socket...')
   if (socket) socket.disconnect()
 }
 
-export const subscribeToMessages = (user, room) => {
+export const joinToChatBot = (user) => {
   if (socket) {
-    socket.emit('join', (user, room))
+    socket.emit('joinChatBot', user)
   }
 }
-export const sendMessage = (data, user) => {
+
+export const firstChatBotMessage = (cb) => {
+  if (socket) {
+    socket.on('joinChatBot', (data) => cb(data))
+  }
+}
+
+export const sendMessage = (data) => {
   if (socket) {
     socket.emit('roomMessage', data)
   }
 }
 
-export const sendQuestionToChatBot = (data) => {
+export const userIsTyping = (data) => {
   if (socket) {
-    socket.emit('sendQuestion', data)
+    socket.emit('typing', data)
   }
 }
 
-export const recievedAnswerFromChatBot = (cb) => {
+export const sendMessageToChatBot = (data) => {
+  if (socket) {
+    socket.emit('sendMessageToChatBot', data)
+  }
+}
+
+export const recieveAnswerFromChatBot = (cb) => {
   if (socket) {
     socket.on('recievedChatBotMessage', (data) => cb(data))
   }

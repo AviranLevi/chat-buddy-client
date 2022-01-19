@@ -6,6 +6,7 @@ const initialState = {
   errors: {
     userName: false,
     email: false,
+    signup: false,
   },
 }
 
@@ -22,6 +23,9 @@ const reducer = (state = initialState, action) => {
 
     case types.EMAIL_ERR:
       return { ...state, errors: { ...state.errors, email: action.payload } }
+
+    case types.SIGN_UP_ERR:
+      return { ...state, errors: { ...state.errors, signup: action.payload } }
 
     default:
       return state

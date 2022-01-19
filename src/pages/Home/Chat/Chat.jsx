@@ -8,15 +8,35 @@ import NothingToDisplay from '../../../components/NothingToDisplay'
 import * as socket from '../../../socket'
 import * as actions from '../../../stores/actions'
 import useStyles from './Chat.css'
+import Typing from '../../../components/Typing'
 
 const Chat = () => {
   const classes = useStyles()
-  const [messageValue, setMessageValues] = useState('')
   const dispatch = useDispatch()
   const { user, room } = useSelector((state) => state)
-  const { id: userId } = user
-  const { id: roomId, name, messages } = room
+  const [messageValue, setMessageValue] = useState('')
+  const [typing, setTyping] = useState(false)
   const scrollRef = useRef()
+
+  const { id: userId, userName } = user
+  const { id: roomId, name, messages } = room
+
+  let timeout
+
+  const timeoutFunction = () => {
+    setTyping(false)
+    socket.userIsTyping(false)
+  }
+
+  const messageValueOnChange = (value) => {
+    if (value) {
+      setTyping(true)
+    }
+    socket.userIsTyping({ userName })
+    setMessageValue(value)
+    clearTimeout(timeout)
+    timeout = setTimeout(timeoutFunction, 1000)
+  }
 
   const handleOnClick = () => {
     const socketData = {
@@ -24,7 +44,7 @@ const Chat = () => {
       user: userId,
       room: roomId,
     }
-    setMessageValues('')
+    setMessageValue('')
     socket.sendMessage(socketData, user)
     socket.recivedMessages((data) => dispatch(actions.getRoomMessagesFromSocket(data)))
   }
@@ -53,9 +73,16 @@ const Chat = () => {
           ) : (
             <NothingToDisplay />
           )}
+
+          {typing && (
+            <div className={classes.typing}>
+              <Typing />
+            </div>
+          )}
         </div>
+
         <div className={classes.userMessageInput}>
-          <InputEmoji value={messageValue} onChange={setMessageValues} onEnter={handleOnClick} placeholder='Type a message...' />
+          <InputEmoji value={messageValue} onChange={messageValueOnChange} onEnter={handleOnClick} placeholder='Type a message...' />
           <Button className={classes.sendBtn} title={<i className='fa-solid fa-paper-plane'></i>} onClick={handleOnClick} />
         </div>
       </div>

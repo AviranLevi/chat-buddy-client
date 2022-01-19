@@ -33,6 +33,7 @@ const Signup = () => {
         {errors.email && <ErrorMessage message='*Please insert valid email' />}
 
         <Button title='Create User' onClick={handleOnClick} />
+        {errors.signup && <ErrorMessage message='*Something went wrong, please try again later :(' />}
       </form>
     </div>
   )

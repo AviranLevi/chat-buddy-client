@@ -19,12 +19,14 @@ export default createUseStyles((theme) => ({
   messagesWrapper: {
     display: 'grid',
     alignItems: 'end',
+    minHeight: 'calc(77vh - 2rem)',
     maxHeight: 'calc(77vh - 2rem)',
     width: 'calc(100% - 2rem)',
     overflow: 'scroll',
     gap: '.5rem',
     padding: '1rem',
     alignSelf: 'start',
+    position: 'relative',
   },
 
   userMessageInput: {
@@ -32,6 +34,13 @@ export default createUseStyles((theme) => ({
     display: 'grid',
     gridTemplateColumns: '92% 8%',
     alginSelf: 'end',
+    position: 'relative',
+  },
+
+  typing: {
+    position: 'absolute',
+    bottom: '0',
+    left: '0',
   },
   sendBtn: {
     padding: '0',

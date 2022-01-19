@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react'
-import { useSelector } from 'react-redux'
-import { useDispatch } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import useStyles from './App.css'
-import Routes from './routes'
+import MainRoutes from './routes/MainRoutes'
+import SignupRoutes from './routes/SignUpRoutes'
 import * as actions from './stores/actions'
 
 const App = () => {
@@ -13,12 +13,8 @@ const App = () => {
   useEffect(() => {
     dispatch(actions.getUser())
   }, [])
-  console.log({ user })
-  return (
-    <div className={classes.app}>
-      <Routes user={user} />
-    </div>
-  )
+
+  return <div className={classes.app}>{user.id ? <MainRoutes /> : <SignupRoutes />}</div>
 }
 
 export default App

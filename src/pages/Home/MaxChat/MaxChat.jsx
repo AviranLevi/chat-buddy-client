@@ -13,21 +13,35 @@ const MaxChat = () => {
   const classes = useStyles()
   const [messageValue, setMessageValues] = useState('')
   const dispatch = useDispatch()
-  const { user, room } = useSelector((state) => state)
-
+  const { user, max } = useSelector((state) => state)
+  const { messages } = max
   const scrollRef = useRef()
 
-  const handleOnClick = () => {
+  const handleOnClick = (e) => {
+    e.preventDefault()
+    const data = {
+      user,
+      message: messageValue,
+      time: '4:13',
+    }
+    dispatch(actions.getMaxChatMessages(data))
+    socket.sendMessageToChatBot(messageValue)
     setMessageValues('')
-    //TODO - get question and return answer from bot
+    recivedChatBotMessage()
   }
+
+  const recivedChatBotMessage = () => socket.recieveAnswerFromChatBot((data) => dispatch(actions.getMaxChatMessages(data)))
 
   useEffect(() => {
     socket.initiateSocketConnection()
+    if (!messages.length) {
+      socket.joinToChatBot(user)
+      socket.firstChatBotMessage((data) => dispatch(actions.getMaxChatMessages(data)))
+    }
     return () => {
       socket.disconnectSocket()
     }
-  }, [user])
+  }, [])
 
   useEffect(() => {
     //scrolling to new message
@@ -40,13 +54,16 @@ const MaxChat = () => {
         <Title title='Max' />
       </div>
       <div className={classes.messagesWrapper}>
-        {/* question / answers */}
-        <NothingToDisplay />
+        {messages && messages.length > 0 ? (
+          messages.map((data) => <MessageCard key={data._id} scrollRef={scrollRef} data={data} currentUser={user} />)
+        ) : (
+          <NothingToDisplay />
+        )}
       </div>
-      <div className={classes.userMessageInput}>
-        <InputEmoji value={messageValue} onChange={setMessageValues} onEnter={handleOnClick} placeholder='Type a message...' />
+      <form className={classes.userMessageInput} onSubmit={handleOnClick}>
+        <InputEmoji value={messageValue} onChange={setMessageValues} onEnter={() => {}} placeholder='Type a message...' />
         <Button className={classes.sendBtn} title={<i className='fa-solid fa-paper-plane'></i>} onClick={handleOnClick} />
-      </div>
+      </form>
     </div>
   )
 }

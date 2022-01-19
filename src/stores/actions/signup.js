@@ -22,27 +22,33 @@ export const userNameError = (bool) => ({
   payload: bool,
 })
 
+export const signUpError = (bool) => ({
+  type: types.SIGN_UP_ERR,
+  payload: bool,
+})
+
 export const createUser = (userName, email) => (dispatch) => {
   const emailIsValid = utils.validateEmail(email)
   const userNameIsValid = utils.validateUserName(userName)
 
   if (!emailIsValid) {
-    emailError(true)
+    dispatch(emailError(true))
   }
 
   if (!userNameIsValid) {
-    userNameError(true)
+    dispatch(userNameError(true))
   }
 
   if (emailIsValid && userNameIsValid) {
-    userNameError(false)
-    emailError(false)
+    dispatch(userNameError(false))
+    dispatch(emailError(false))
+    dispatch(signUpError(false))
 
     api
       .createUser({ userName, email })
       .then((res) => {
         window.reload()
       })
-      .catch((err) => console.log(err))
+      .catch((err) => err && dispatch(signUpError(true)))
   }
 }

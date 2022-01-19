@@ -1,3 +1,4 @@
+export * from './max'
 export * from './room'
 export * from './user'
 export * from './signup'

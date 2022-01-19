@@ -3,12 +3,14 @@ import thunk from 'redux-thunk'
 import { DEV } from '../config'
 
 // reducers
+import MaxReducer from './reducers/max'
 import UserReducer from './reducers/user'
 import RoomReducer from './reducers/room'
 import SignupReducer from './reducers/signup'
 import FeaturesReducer from './reducers/features'
 
 const rootReducer = combineReducers({
+  max: MaxReducer,
   user: UserReducer,
   room: RoomReducer,
   signup: SignupReducer,

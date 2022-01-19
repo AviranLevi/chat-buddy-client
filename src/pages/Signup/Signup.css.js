@@ -11,18 +11,29 @@ export default createUseStyles((theme) => ({
     gridColumn: '1/3',
     alignSelf: 'center',
     justifySelf: 'center',
+    position: 'relative',
   },
+
+  signUpLogo: {
+    position: 'absolute',
+    top: '0',
+    left: '0',
+    '-webkit-mask-image': 'linear-gradient(to right, transparent, #fff, transparent)',
+  },
+
   signupPageTitles: {
     display: 'grid',
     placeItems: 'center',
     gap: '1rem',
   },
+
   signup: {
     display: 'grid',
     gap: '1rem',
     alignSelf: 'start',
     width: '30%',
   },
+
   signupTitle: {
     justifySelf: 'start',
   },

@@ -37,7 +37,7 @@ export const getRoomByUniqueName = async (name) => {
     const { data } = await api.get(`/unique/${name}`)
     return data
   } catch (error) {
-    return error
+    return { error }
   }
 }
 
@@ -46,7 +46,7 @@ export const updateRoom = async (roomId, newData) => {
     const { data } = await api.put(`/${roomId}`, newData)
     return data
   } catch (error) {
-    return error
+    return { error }
   }
 }
 
