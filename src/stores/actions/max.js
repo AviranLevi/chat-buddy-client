@@ -1,7 +1,6 @@
-import * as socket from '../../socket'
 import * as types from '../types'
 
-export const getMaxChatMessages = (newMessage) => (dispatch, getState) => {
+export const pushToMaxChatMessages = (newMessage) => (dispatch, getState) => {
   const { messages } = getState().max
   const updatedMessage = [...messages, newMessage]
 

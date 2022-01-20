@@ -17,26 +17,22 @@ const MaxChat = () => {
   const { messages } = max
   const scrollRef = useRef()
 
-  const handleOnClick = (e) => {
-    e.preventDefault()
+  const handleOnClick = () => {
     const data = {
       user,
       message: messageValue,
       time: '4:13',
     }
-    dispatch(actions.getMaxChatMessages(data))
+    dispatch(actions.pushToMaxChatMessages(data))
     socket.sendMessageToChatBot(messageValue)
     setMessageValues('')
-    recivedChatBotMessage()
   }
-
-  const recivedChatBotMessage = () => socket.recieveAnswerFromChatBot((data) => dispatch(actions.getMaxChatMessages(data)))
 
   useEffect(() => {
     socket.initiateSocketConnection()
     if (!messages.length) {
       socket.joinToChatBot(user)
-      socket.firstChatBotMessage((data) => dispatch(actions.getMaxChatMessages(data)))
+      socket.firstChatBotMessage((data) => dispatch(actions.pushToMaxChatMessages(data)))
     }
     return () => {
       socket.disconnectSocket()
@@ -46,6 +42,10 @@ const MaxChat = () => {
   useEffect(() => {
     //scrolling to new message
     scrollRef.current?.scrollIntoView({ behavior: 'smooth' })
+  }, [messages])
+
+  useEffect(() => {
+    socket.recieveAnswerFromChatBot((data) => dispatch(actions.pushToMaxChatMessages(data)))
   }, [])
 
   return (
@@ -60,10 +60,10 @@ const MaxChat = () => {
           <NothingToDisplay />
         )}
       </div>
-      <form className={classes.userMessageInput} onSubmit={handleOnClick}>
-        <InputEmoji value={messageValue} onChange={setMessageValues} onEnter={() => {}} placeholder='Type a message...' />
+      <div className={classes.userMessageInput}>
+        <InputEmoji value={messageValue} onChange={setMessageValues} onEnter={handleOnClick} placeholder='Type a message...' />
         <Button className={classes.sendBtn} title={<i className='fa-solid fa-paper-plane'></i>} onClick={handleOnClick} />
-      </form>
+      </div>
     </div>
   )
 }
