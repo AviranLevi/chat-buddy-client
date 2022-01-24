@@ -1,10 +1,10 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
-import Title from '../Title'
-import useStyles from './Room.css'
+import React from "react"
+import { Link } from "react-router-dom"
+import Title from "../Title"
+import useStyles from "./Room.css"
 
-const Room = ({ key, room }) => {
-  const classes = useStyles()
+const Room = ({ key, room, currentRoom }) => {
+  const classes = useStyles({ currentRoom })
   const { name, type, uniqueName } = room
 
   return (

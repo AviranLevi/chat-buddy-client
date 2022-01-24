@@ -11,9 +11,10 @@ const RoomsList = () => {
   const classes = useStyles()
   const dispatch = useDispatch()
   const history = useHistory()
-  const { user, features } = useSelector((state) => state)
+  const { user, features, room } = useSelector((state) => state)
   const { roomListIsLoading } = features
   const { id: userId, rooms } = user
+  const { name: currentRoom } = room
 
   const talWithMax = () => history.push("/max")
 
@@ -30,7 +31,9 @@ const RoomsList = () => {
         Max 🤖
       </div>
       {!roomListIsLoading && rooms && rooms.length > 0 ? (
-        rooms.map((room) => <Room key={room._id} room={room} />)
+        rooms.map((room) => (
+          <Room key={room._id} room={room} currentRoom={currentRoom} />
+        ))
       ) : (
         <NothingToDisplay />
       )}
