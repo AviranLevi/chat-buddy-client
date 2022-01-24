@@ -1,11 +1,10 @@
-import * as types from '../types'
+import * as types from "../types"
 
 const initialState = {
   createRoomTogglePopup: false,
   toggleProfile: false,
   toggleRoomList: true,
-  talkWithMax: true,
-  talkWithPeople: false,
+  roomListIsLoading: true,
 }
 
 const reducer = (state = initialState, action) => {
@@ -19,11 +18,8 @@ const reducer = (state = initialState, action) => {
     case types.SHOW_PROFILE:
       return { ...state, toggleProfile: action.payload }
 
-    case types.TALK_WITH_MAX:
-      return { ...state, talkWithMax: action.payload }
-
-    case types.TALK_WITH_PEOPLE:
-      return { ...state, talkWithPeople: action.payload }
+    case types.ROOM_LIST_IS_LOADING:
+      return { ...state, roomListIsLoading: action.payload }
 
     default:
       return state

@@ -1,4 +1,4 @@
-import * as types from '../types'
+import * as types from "../types"
 
 export const createRoomTogglePopup = (bool) => ({
   type: types.CREATE_ROOM_TOGGLE_POPUP,
@@ -15,12 +15,7 @@ export const toggleRoomList = (bool) => ({
   payload: bool,
 })
 
-export const talkWithMax = (bool) => ({
-  type: types.TALK_WITH_MAX,
-  payload: bool,
-})
-
-export const talkWithPeople = (bool) => ({
-  type: types.TALK_WITH_PEOPLE,
+export const roomListIsLoading = (bool) => ({
+  type: types.ROOM_LIST_IS_LOADING,
   payload: bool,
 })

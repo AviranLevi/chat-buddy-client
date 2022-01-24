@@ -1,4 +1,4 @@
 export const roomTypes = {
-  private: 'private',
-  public: 'public',
+  private: "private",
+  public: "public",
 }
