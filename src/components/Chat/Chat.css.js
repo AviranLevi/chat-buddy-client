@@ -28,6 +28,7 @@ export default createUseStyles((theme) => ({
     overflowX: "hidden",
     marginRight: ".5rem",
     position: "relative",
+    borderBottom: "1px solid #ededed",
 
     "&::-webkit-scrollbar-track": {
       width: "10px",
@@ -39,8 +40,7 @@ export default createUseStyles((theme) => ({
 
     "&::-webkit-scrollbar-thumb": {
       borderRadius: "18px",
-      boxShadow: "0 0 6px rgba(0, 0, 0, .3)",
-      backgroundColor: "#555",
+      backgroundColor: theme.background.primary,
     },
   },
 
