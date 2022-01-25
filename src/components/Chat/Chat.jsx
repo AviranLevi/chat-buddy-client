@@ -1,11 +1,11 @@
-import React, { useEffect } from "react"
-import InputEmoji from "react-input-emoji"
-import Button from "../Button"
-import MessageCard from "../MessageCard"
-import Title from "../Title"
-import NothingToDisplay from "../NothingToDisplay"
-import useStyles from "./Chat.css"
-import Typing from "../Typing"
+import React, { useEffect } from 'react'
+import InputEmoji from 'react-input-emoji'
+import Button from '../Button'
+import MessageCard from '../MessageCard'
+import Title from '../Title'
+import NothingToDisplay from '../NothingToDisplay'
+import useStyles from './Chat.css'
+import Typing from '../Typing'
 
 const Chat = ({
   roomTitle,
@@ -13,7 +13,8 @@ const Chat = ({
   messages = [],
   scrollRef,
   currentUser,
-  inputValue = "",
+  inputValue = '',
+  toggleRoomInfo,
   onChange,
   onClick,
 }) => {
@@ -21,13 +22,17 @@ const Chat = ({
 
   useEffect(() => {
     //scrolling to new message
-    scrollRef.current?.scrollIntoView({ behavior: "smooth" })
+    scrollRef.current?.scrollIntoView({ behavior: 'smooth' })
   }, [messages])
 
   return (
     <div className={classes.chat}>
       <div className={classes.chatRoomTitle}>
         <Title title={roomTitle} />
+
+        <div className={classes.roomInfoBtn} onClick={toggleRoomInfo}>
+          <i class="fa-solid fa-ellipsis-vertical"></i>
+        </div>
       </div>
       <div className={classes.messagesWrapper}>
         {messages && messages.length > 0 ? (

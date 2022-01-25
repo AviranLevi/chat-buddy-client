@@ -1,26 +1,27 @@
-import React, { useEffect } from "react"
-import { useLocation } from "react-router-dom"
-import { useDispatch, useSelector } from "react-redux"
-import RoomChat from "./RoomChat"
-import Profile from "./Profile"
-import RoomsPannel from "./RoomsPannel"
-import CreateRoomPopup from "./CreateRoomPopup"
-import Page from "../../components/Page"
-import * as actions from "../../stores/actions"
-import useStyles from "./Home.css"
-import MaxChat from "./MaxChat"
-import { useHistory } from "react-router-dom"
+import React, { useEffect } from 'react'
+import { useLocation } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
+import RoomChat from './RoomChat'
+import Profile from './Profile'
+import RoomsPannel from './RoomsPannel'
+import CreateRoomPopup from './CreateRoomPopup'
+import Page from '../../components/Page'
+import * as actions from '../../stores/actions'
+import useStyles from './Home.css'
+import MaxChat from './MaxChat'
+import { useHistory } from 'react-router-dom'
+import RoomInfo from './RoomInfo'
 
 const Home = () => {
-  const classes = useStyles()
   const dispatch = useDispatch()
   const history = useHistory()
   const { pathname } = useLocation()
   const { features, room } = useSelector((state) => state)
+  const classes = useStyles({ features })
 
-  const roomName = pathname.split("/")[1]
-  const max = pathname.split("/")[1] === "max"
-  const { createRoomTogglePopup, toggleProfile, toggleRoomList } = features
+  const roomName = pathname.split('/')[1]
+  const max = pathname.split('/')[1] === 'max'
+
   const { errors } = room
 
   useEffect(() => {
@@ -31,18 +32,19 @@ const Home = () => {
 
   useEffect(() => {
     if (errors.roomNotFound) {
-      history.push("/")
+      history.push('/')
     }
   }, [errors.roomNotFound])
 
   return (
     <Page className={classes.home}>
-      {toggleRoomList && <RoomsPannel />}
-      {toggleProfile && <Profile />}
+      {features.toggleRoomList && <RoomsPannel />}
+      {features.toggleProfile && <Profile />}
       {max && <MaxChat />}
       {!max && roomName && <RoomChat />}
+      {features.toggleRoomInfo && <RoomInfo />}
 
-      {createRoomTogglePopup && <CreateRoomPopup />}
+      {features.createRoomTogglePopup && <CreateRoomPopup />}
     </Page>
   )
 }

@@ -4,8 +4,13 @@ export default createUseStyles((theme) => ({
   fadeIn: {
     animation: 'fadeIn 1s ease-in-out',
   },
+
   fadeOut: {
     animation: 'fadeOut 1s ease-in-out',
+  },
+
+  expand: {
+    animation: 'expand 1s ease-in-out',
   },
 
   '@global': {
@@ -24,6 +29,15 @@ export default createUseStyles((theme) => ({
       },
       to: {
         opacity: 0,
+      },
+    },
+
+    '@keyframes expand': {
+      from: {
+        width: '0',
+      },
+      to: {
+        width: '100%',
       },
     },
   },

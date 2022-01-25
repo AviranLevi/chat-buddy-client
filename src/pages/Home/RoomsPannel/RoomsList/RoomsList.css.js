@@ -9,6 +9,7 @@ export default createUseStyles((theme) => ({
     flexDirection: 'column',
     borderRadius: '25px',
   },
+
   roomsPannelTitle: {
     padding: '2rem 0 1rem',
   },
@@ -16,7 +17,6 @@ export default createUseStyles((theme) => ({
   maxRoom: {
     padding: '1rem',
     fontSize: '2rem',
-
     margin: '.5rem 0',
     cursor: 'pointer',
     textAlign: 'center',

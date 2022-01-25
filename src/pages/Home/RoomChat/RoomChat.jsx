@@ -1,15 +1,15 @@
-import React, { useRef, useState, useEffect } from "react"
-import { useDispatch, useSelector } from "react-redux"
-import * as socket from "../../../socket"
-import * as actions from "../../../stores/actions"
-import useStyles from "./RoomChat.css"
-import Chat from "../../../components/Chat/Chat"
+import React, { useRef, useState, useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import * as socket from '../../../socket'
+import * as actions from '../../../stores/actions'
+import useStyles from './RoomChat.css'
+import Chat from '../../../components/Chat/Chat'
 
 const RoomChat = () => {
   const classes = useStyles()
   const dispatch = useDispatch()
-  const { user, room } = useSelector((state) => state)
-  const [messageValue, setMessageValue] = useState("")
+  const { user, room, features } = useSelector((state) => state)
+  const [messageValue, setMessageValue] = useState('')
   const [typing, setTyping] = useState(false)
   const scrollRef = useRef()
 
@@ -24,9 +24,7 @@ const RoomChat = () => {
   }
 
   const messageValueOnChange = (value) => {
-    if (value) {
-      setTyping(true)
-    }
+    if (value) setTyping(true)
     socket.userIsTyping({ userName })
     setMessageValue(value)
     clearTimeout(timeout)
@@ -39,15 +37,21 @@ const RoomChat = () => {
       user: userId,
       room: roomId,
     }
-    setMessageValue("")
+    setMessageValue('')
     socket.sendMessage(socketData, user)
-    socket.recivedMessages((data) =>
-      dispatch(actions.getRoomMessagesFromSocket(data))
-    )
   }
+
+  const toggleRoomInfoOnClick = () => dispatch(actions.toggleRoomInfo(!features.toggleRoomInfo))
 
   useEffect(() => {
     socket.initiateSocketConnection()
+
+    socket.recivedMessages((data) => {
+      const { updatedMessages, roomId: messageRoomId } = data
+      if (roomId === messageRoomId) {
+        dispatch(actions.getRoomMessagesFromSocket(updatedMessages))
+      }
+    })
     return () => {
       socket.disconnectSocket()
     }
@@ -63,6 +67,7 @@ const RoomChat = () => {
       onChange={messageValueOnChange}
       onClick={handleOnClick}
       currentUser={user}
+      toggleRoomInfo={toggleRoomInfoOnClick}
     />
   )
 }

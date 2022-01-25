@@ -1,9 +1,9 @@
-import * as types from "../types"
-import * as api from "../../api"
-import { roomListIsLoading } from "./features"
+import * as types from '../types'
+import * as api from '../../api'
+import { roomListIsLoading } from './features'
 
 export const getUser = () => (dispatch) => {
-  const userId = localStorage.getItem("userId")
+  const userId = localStorage.getItem('userId')
   api
     .getUser(userId)
     .then((res) => {

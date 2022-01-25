@@ -9,7 +9,9 @@ export default createUseStyles((theme) => ({
     padding: '1rem 0 1rem 1rem',
     background: theme.background.secondary,
     borderRadius: '25px',
-    gridTemplateColumns: '30% 70%',
     justifySelf: 'start',
+    transition: 'all ease-in-out .5s',
+
+    gridTemplateColumns: ({ features }) => (features.toggleRoomInfo ? '25% auto 20%' : '25% 75%'),
   },
 }))

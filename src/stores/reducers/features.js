@@ -1,10 +1,11 @@
-import * as types from "../types"
+import * as types from '../types'
 
 const initialState = {
   createRoomTogglePopup: false,
   toggleProfile: false,
   toggleRoomList: true,
   roomListIsLoading: true,
+  toggleRoomInfo: false,
 }
 
 const reducer = (state = initialState, action) => {
@@ -20,6 +21,9 @@ const reducer = (state = initialState, action) => {
 
     case types.ROOM_LIST_IS_LOADING:
       return { ...state, roomListIsLoading: action.payload }
+
+    case types.TOGGLE_ROOM_INFO:
+      return { ...state, toggleRoomInfo: action.payload }
 
     default:
       return state

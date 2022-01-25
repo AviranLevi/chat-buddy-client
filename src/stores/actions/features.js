@@ -1,4 +1,4 @@
-import * as types from "../types"
+import * as types from '../types'
 
 export const createRoomTogglePopup = (bool) => ({
   type: types.CREATE_ROOM_TOGGLE_POPUP,
@@ -17,5 +17,10 @@ export const toggleRoomList = (bool) => ({
 
 export const roomListIsLoading = (bool) => ({
   type: types.ROOM_LIST_IS_LOADING,
+  payload: bool,
+})
+
+export const toggleRoomInfo = (bool) => ({
+  type: types.TOGGLE_ROOM_INFO,
   payload: bool,
 })

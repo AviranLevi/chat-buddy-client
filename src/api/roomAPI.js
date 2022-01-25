@@ -7,7 +7,7 @@ const api = axios.create({
 
 export const createRoom = async (name, type, users, admin) => {
   try {
-    const { data } = await api.post('/', { name, type, users, admin })
+    const { data } = await api.post('/', { name, type, emails: users, admin })
     return data
   } catch (error) {
     return error
