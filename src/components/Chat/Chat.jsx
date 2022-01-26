@@ -17,6 +17,7 @@ const Chat = ({
   toggleRoomInfo,
   onChange,
   onClick,
+  className = '',
 }) => {
   const classes = useStyles()
 
@@ -26,7 +27,7 @@ const Chat = ({
   }, [messages])
 
   return (
-    <div className={classes.chat}>
+    <div className={`${classes.chat} ${className}`}>
       <div className={classes.chatRoomTitle}>
         <Title title={roomTitle} />
 
@@ -37,12 +38,7 @@ const Chat = ({
       <div className={classes.messagesWrapper}>
         {messages && messages.length > 0 ? (
           messages.map((data) => (
-            <MessageCard
-              key={data._id}
-              scrollRef={scrollRef}
-              data={data}
-              currentUser={currentUser}
-            />
+            <MessageCard key={data._id} scrollRef={scrollRef} data={data} currentUser={currentUser} />
           ))
         ) : (
           <NothingToDisplay />
@@ -56,17 +52,8 @@ const Chat = ({
       </div>
 
       <div className={classes.userMessageInput}>
-        <InputEmoji
-          value={inputValue}
-          onChange={onChange}
-          onEnter={onClick}
-          placeholder="Type a message..."
-        />
-        <Button
-          className={classes.sendBtn}
-          title={<i className="fa-solid fa-paper-plane"></i>}
-          onClick={onClick}
-        />
+        <InputEmoji value={inputValue} onChange={onChange} onEnter={onClick} placeholder="Type a message..." />
+        <Button className={classes.sendBtn} title={<i className="fa-solid fa-paper-plane"></i>} onClick={onClick} />
       </div>
     </div>
   )

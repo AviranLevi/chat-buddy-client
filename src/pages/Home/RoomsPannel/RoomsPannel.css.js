@@ -2,6 +2,7 @@ import { createUseStyles } from 'react-jss'
 
 export default createUseStyles((theme) => ({
   roomsPannel: {
+    flexBasis: '25%',
     height: '100%',
     width: 'calc(100% - 3rem)',
     background: theme.background.light,

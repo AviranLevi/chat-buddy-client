@@ -20,7 +20,25 @@ export const roomListIsLoading = (bool) => ({
   payload: bool,
 })
 
-export const toggleRoomInfo = (bool) => ({
-  type: types.TOGGLE_ROOM_INFO,
+export const toggleRoomInfoAnimation = (bool) => ({
+  type: types.TOGGLE_ROOM_INFO_ANIMATION,
   payload: bool,
 })
+
+export const toggleRoomInfo = (bool) => (dispatch) => {
+  if (bool) {
+    dispatch(toggleRoomInfoAnimation(bool))
+    dispatch({
+      type: types.TOGGLE_ROOM_INFO,
+      payload: bool,
+    })
+  } else {
+    dispatch(toggleRoomInfoAnimation(bool))
+    setTimeout(() => {
+      dispatch({
+        type: types.TOGGLE_ROOM_INFO,
+        payload: bool,
+      })
+    }, 1000)
+  }
+}

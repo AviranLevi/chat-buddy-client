@@ -3,9 +3,10 @@ import { createUseStyles } from 'react-jss'
 export default createUseStyles((theme) => ({
   roomInfo: {
     display: 'flex',
+    opacity: 1,
     flexDirection: 'column',
     height: '100%',
-    width: '100%',
+    width: '30%',
     gap: '1rem',
     borderLeft: '1px solid #ededed',
   },

@@ -4,9 +4,11 @@ import * as socket from '../../../socket'
 import * as actions from '../../../stores/actions'
 import useStyles from './RoomChat.css'
 import Chat from '../../../components/Chat/Chat'
+import animationsCss from '../../../assets/animations.css'
 
-const RoomChat = () => {
+const RoomChat = ({ location }) => {
   const classes = useStyles()
+  const animations = animationsCss()
   const dispatch = useDispatch()
   const { user, room, features } = useSelector((state) => state)
   const [messageValue, setMessageValue] = useState('')
@@ -14,7 +16,7 @@ const RoomChat = () => {
   const scrollRef = useRef()
 
   const { id: userId, userName } = user
-  const { id: roomId, name, messages } = room
+  const { id: roomId, name, messages, uniqueName } = room
 
   let timeout
 
@@ -28,7 +30,7 @@ const RoomChat = () => {
     socket.userIsTyping({ userName })
     setMessageValue(value)
     clearTimeout(timeout)
-    timeout = setTimeout(timeoutFunction, 1000)
+    timeout = setTimeout(timeoutFunction, 500)
   }
 
   const handleOnClick = () => {
@@ -36,6 +38,7 @@ const RoomChat = () => {
       message: messageValue,
       user: userId,
       room: roomId,
+      roomName: name,
     }
     setMessageValue('')
     socket.sendMessage(socketData, user)
@@ -45,17 +48,21 @@ const RoomChat = () => {
 
   useEffect(() => {
     socket.initiateSocketConnection()
-
-    socket.recivedMessages((data) => {
-      const { updatedMessages, roomId: messageRoomId } = data
-      if (roomId === messageRoomId) {
-        dispatch(actions.getRoomMessagesFromSocket(updatedMessages))
-      }
-    })
     return () => {
       socket.disconnectSocket()
     }
-  }, [user])
+  }, [])
+
+  useEffect(() => {
+    const roomPathName = location.split('/')[1]
+
+    socket.recivedMessages((data) => {
+      const { updatedMessages, roomId: messageRoomId } = data
+      if (roomId === messageRoomId && uniqueName === roomPathName) {
+        dispatch(actions.getRoomMessagesFromSocket(updatedMessages))
+      }
+    })
+  }, [messages])
 
   return (
     <Chat

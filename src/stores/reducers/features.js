@@ -6,6 +6,7 @@ const initialState = {
   toggleRoomList: true,
   roomListIsLoading: true,
   toggleRoomInfo: false,
+  toogleRoomInfoAnimation: false,
 }
 
 const reducer = (state = initialState, action) => {
@@ -24,6 +25,9 @@ const reducer = (state = initialState, action) => {
 
     case types.TOGGLE_ROOM_INFO:
       return { ...state, toggleRoomInfo: action.payload }
+
+    case types.TOGGLE_ROOM_INFO_ANIMATION:
+      return { ...state, toogleRoomInfoAnimation: action.payload }
 
     default:
       return state

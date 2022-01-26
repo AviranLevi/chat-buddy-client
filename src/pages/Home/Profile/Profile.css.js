@@ -10,6 +10,7 @@ export default createUseStyles((theme) => ({
     borderRadius: '25px',
     padding: '0 1.5rem',
     justifySelf: 'start',
+    flexBasis: '25%',
   },
   profileTitle: {
     fontSize: '2.5rem',

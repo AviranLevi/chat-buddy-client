@@ -1,16 +1,16 @@
 import React, { useEffect } from 'react'
-import { useLocation } from 'react-router-dom'
+import { useLocation, useHistory } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import RoomChat from './RoomChat'
 import Profile from './Profile'
 import RoomsPannel from './RoomsPannel'
 import CreateRoomPopup from './CreateRoomPopup'
+import MaxChat from './MaxChat'
+import RoomInfo from './RoomInfo'
 import Page from '../../components/Page'
 import * as actions from '../../stores/actions'
 import useStyles from './Home.css'
-import MaxChat from './MaxChat'
-import { useHistory } from 'react-router-dom'
-import RoomInfo from './RoomInfo'
+import animationsCss from '../../assets/animations.css'
 
 const Home = () => {
   const dispatch = useDispatch()
@@ -18,10 +18,11 @@ const Home = () => {
   const { pathname } = useLocation()
   const { features, room } = useSelector((state) => state)
   const classes = useStyles({ features })
+  const animations = animationsCss()
 
   const roomName = pathname.split('/')[1]
   const max = pathname.split('/')[1] === 'max'
-
+  console.log({ pathname, roomName })
   const { errors } = room
 
   useEffect(() => {
@@ -41,7 +42,7 @@ const Home = () => {
       {features.toggleRoomList && <RoomsPannel />}
       {features.toggleProfile && <Profile />}
       {max && <MaxChat />}
-      {!max && roomName && <RoomChat />}
+      {!max && roomName && <RoomChat location={pathname} />}
       {features.toggleRoomInfo && <RoomInfo />}
 
       {features.createRoomTogglePopup && <CreateRoomPopup />}

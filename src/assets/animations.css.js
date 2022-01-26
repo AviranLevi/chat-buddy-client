@@ -13,6 +13,10 @@ export default createUseStyles((theme) => ({
     animation: 'expand 1s ease-in-out',
   },
 
+  collapse: {
+    animation: 'collapse 1s ease-in-out',
+  },
+
   '@global': {
     '@keyframes fadeIn': {
       from: {
@@ -37,7 +41,16 @@ export default createUseStyles((theme) => ({
         width: '0',
       },
       to: {
-        width: '100%',
+        width: '30%',
+      },
+    },
+
+    '@keyframes collapse': {
+      from: {
+        width: '30%',
+      },
+      to: {
+        width: '0',
       },
     },
   },
