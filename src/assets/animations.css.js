@@ -10,11 +10,11 @@ export default createUseStyles((theme) => ({
   },
 
   expand: {
-    animation: 'expand 1s ease-in-out',
+    animation: 'expand 1s ease-in-out, fadeIn 1s ease-in-out',
   },
 
   collapse: {
-    animation: 'collapse 1s ease-in-out',
+    animation: 'collapse 1s ease-in-out, fadeOut 1s ease-in-out',
   },
 
   '@global': {

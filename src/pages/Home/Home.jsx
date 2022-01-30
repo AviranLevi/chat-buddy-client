@@ -10,7 +10,6 @@ import RoomInfo from './RoomInfo'
 import Page from '../../components/Page'
 import * as actions from '../../stores/actions'
 import useStyles from './Home.css'
-import animationsCss from '../../assets/animations.css'
 
 const Home = () => {
   const dispatch = useDispatch()
@@ -18,11 +17,9 @@ const Home = () => {
   const { pathname } = useLocation()
   const { features, room } = useSelector((state) => state)
   const classes = useStyles({ features })
-  const animations = animationsCss()
 
   const roomName = pathname.split('/')[1]
   const max = pathname.split('/')[1] === 'max'
-  console.log({ pathname, roomName })
   const { errors } = room
 
   useEffect(() => {
@@ -41,10 +38,11 @@ const Home = () => {
     <Page className={classes.home}>
       {features.toggleRoomList && <RoomsPannel />}
       {features.toggleProfile && <Profile />}
+
       {max && <MaxChat />}
       {!max && roomName && <RoomChat location={pathname} />}
-      {features.toggleRoomInfo && <RoomInfo />}
 
+      {features.toggleRoomInfo && <RoomInfo />}
       {features.createRoomTogglePopup && <CreateRoomPopup />}
     </Page>
   )

@@ -22,3 +22,12 @@ export const getUser = async (userId) => {
     return error
   }
 }
+
+export const updateUser = async (userId, newDetails) => {
+  try {
+    const { data } = await api.put(`/${userId}`, newDetails)
+    return data
+  } catch (error) {
+    return error
+  }
+}

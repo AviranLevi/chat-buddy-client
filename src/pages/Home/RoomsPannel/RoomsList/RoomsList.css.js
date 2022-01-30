@@ -24,7 +24,7 @@ export default createUseStyles((theme) => ({
     background: theme.background.primary,
     color: theme.text.light,
     borderRadius: '12px',
-
+    zIndex: '20',
     '&:hover': {
       borderRadius: '25px',
       boxShadow: `7px 7px 20px 0px grey`,

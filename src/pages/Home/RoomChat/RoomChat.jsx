@@ -22,15 +22,15 @@ const RoomChat = ({ location }) => {
 
   const timeoutFunction = () => {
     setTyping(false)
-    socket.userIsTyping(false)
+    socket.userStopTyping({ userName, roomId })
   }
 
   const messageValueOnChange = (value) => {
-    if (value) setTyping(true)
-    socket.userIsTyping({ userName })
+    socket.userIsTyping({ userName, roomId })
+    setTyping(true)
     setMessageValue(value)
     clearTimeout(timeout)
-    timeout = setTimeout(timeoutFunction, 500)
+    timeout = setTimeout(timeoutFunction, 700)
   }
 
   const handleOnClick = () => {
@@ -63,6 +63,25 @@ const RoomChat = ({ location }) => {
       }
     })
   }, [messages])
+
+  useEffect(() => {
+    socket.recivedTyping((data) => {
+      const { userName: typingUserName } = data
+      console.log({ typingUserName })
+      if (typingUserName !== userName) {
+        setTyping(true)
+      }
+    })
+
+    socket.recivedStopTyping((data) => {
+      const { userName: typingUserName } = data
+      console.log('stop', { typingUserName })
+
+      if (typingUserName !== userName) {
+        setTyping(false)
+      }
+    })
+  }, [])
 
   return (
     <Chat

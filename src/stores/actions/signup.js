@@ -59,3 +59,12 @@ export const createUser = (userName, email) => (dispatch) => {
       .catch((err) => err && dispatch(signUpError(true)))
   }
 }
+
+export const getUserFromInvite = (id) => (dispatch) => {
+  api
+    .getUser(id)
+    .then((res) => {
+      dispatch({ type: types.GET_USER_BY_INVITE_URL, payload: res })
+    })
+    .catch((err) => console.log(err))
+}

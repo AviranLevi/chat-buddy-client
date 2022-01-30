@@ -16,7 +16,7 @@ const initialState = {
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case types.GET_ROOM:
-      return { ...state, id: action.payload._id, ...action.payload }
+      return { ...state, ...action.payload }
 
     case types.GET_ROOM_MESSAGES:
       return { ...state, messages: action.payload }

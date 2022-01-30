@@ -30,7 +30,7 @@ export default createUseStyles((theme) => ({
   messagesWrapper: {
     display: 'grid',
     alignItems: 'end',
-    maxHeight: 'calc(77vh - 2rem)',
+    maxHeight: 'calc(78.5vh - 2rem)',
     width: 'calc(100% - 2rem)',
     overflow: 'scroll',
     gap: '.5rem',
@@ -39,7 +39,6 @@ export default createUseStyles((theme) => ({
     overflowX: 'hidden',
     marginRight: '.5rem',
     position: 'relative',
-    borderBottom: '1px solid #ededed',
 
     '&::-webkit-scrollbar-track': {
       width: '10px',
@@ -56,19 +55,20 @@ export default createUseStyles((theme) => ({
   },
 
   typing: {
-    position: 'absolute',
-    bottom: '0',
-    left: '0',
+    justifySelf: 'start',
   },
 
   userMessageInput: {
-    width: '95%',
+    width: '100%',
+    height: '100%',
     display: 'grid',
+    placeItems: 'center',
     gridTemplateColumns: '92% 8%',
-    alginSelf: 'end',
+    borderTop: '1px solid #ededed',
   },
 
   sendBtn: {
-    padding: '0',
+    padding: '1.2rem',
+    borderRadius: '100%',
   },
 }))

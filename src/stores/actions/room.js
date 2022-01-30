@@ -8,9 +8,9 @@ export const roomNotFound = (bool) => ({
 })
 
 export const createRoom = (name, type, users) => (dispatch, getState) => {
-  const { id } = getState().user
+  const { id, userName } = getState().user
   api
-    .createRoom(name, type, users, id)
+    .createRoom(name, type, users, id, userName)
     .then((res) => {
       dispatch(getRoomsByUser())
     })

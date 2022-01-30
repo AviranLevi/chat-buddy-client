@@ -51,3 +51,21 @@ export const recivedMessages = (cb) => {
     socket.on('recivedMessages', (data) => cb(data))
   }
 }
+
+export const recivedTyping = (cb) => {
+  if (socket) {
+    socket.on('recivedTyping', (data) => cb(data))
+  }
+}
+
+export const userStopTyping = (data) => {
+  if (socket) {
+    socket.emit('stopTyping', data)
+  }
+}
+
+export const recivedStopTyping = (cb) => {
+  if (socket) {
+    socket.on('recivedStopStyping', (data) => cb(data))
+  }
+}

@@ -24,7 +24,7 @@ const Chat = ({
   useEffect(() => {
     //scrolling to new message
     scrollRef.current?.scrollIntoView({ behavior: 'smooth' })
-  }, [messages])
+  }, [messages, typing])
 
   return (
     <div className={`${classes.chat} ${className}`}>
@@ -44,11 +44,7 @@ const Chat = ({
           <NothingToDisplay />
         )}
 
-        {typing && (
-          <div className={classes.typing}>
-            <Typing />
-          </div>
-        )}
+        {typing && <Typing scrollRef={scrollRef} className={classes.typing} />}
       </div>
 
       <div className={classes.userMessageInput}>

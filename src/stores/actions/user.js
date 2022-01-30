@@ -23,3 +23,5 @@ export const getRoomsByUser = () => (dispatch, getState) => {
     })
     .catch((err) => console.log(err))
 }
+
+export const updateUser = (id, userName, email) => (dispatch) => {}

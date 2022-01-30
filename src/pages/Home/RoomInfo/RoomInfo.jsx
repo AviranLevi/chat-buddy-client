@@ -12,9 +12,7 @@ const RoomInfo = () => {
   const { name, users, type } = room
   const { toogleRoomInfoAnimation } = features
 
-  const displayAnimation = toogleRoomInfoAnimation
-    ? `${animations.fadeIn} ${animations.expand}`
-    : `${animations.fadeOut} ${animations.collapse}`
+  const displayAnimation = toogleRoomInfoAnimation ? animations.expand : animations.collapse
 
   return (
     <div className={`${classes.roomInfo} ${displayAnimation} `}>
