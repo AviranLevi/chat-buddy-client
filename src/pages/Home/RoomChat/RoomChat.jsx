@@ -4,11 +4,9 @@ import * as socket from '../../../socket'
 import * as actions from '../../../stores/actions'
 import useStyles from './RoomChat.css'
 import Chat from '../../../components/Chat/Chat'
-import animationsCss from '../../../assets/animations.css'
 
 const RoomChat = ({ location }) => {
   const classes = useStyles()
-  const animations = animationsCss()
   const dispatch = useDispatch()
   const { user, room, features } = useSelector((state) => state)
   const [messageValue, setMessageValue] = useState('')
@@ -30,7 +28,7 @@ const RoomChat = ({ location }) => {
     setTyping(true)
     setMessageValue(value)
     clearTimeout(timeout)
-    timeout = setTimeout(timeoutFunction, 700)
+    timeout = setTimeout(timeoutFunction, 1000)
   }
 
   const handleOnClick = () => {

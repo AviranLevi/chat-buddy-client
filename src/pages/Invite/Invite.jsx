@@ -22,21 +22,20 @@ const Invite = () => {
 
   const handleOnClick = (e) => {
     e.preventDefault()
-    dispatch(actions.updateUser(userName, email))
+    dispatch(actions.updateUser(userId, userName, email))
   }
 
   useEffect(() => {
-    //TODO - get user by id to update
     dispatch(actions.getUserFromInvite(userId))
   }, [])
 
   return (
-    <Page className={classes.invite}>
-      <div className={classes.signupPageTitles}>
+    <div className={classes.invite}>
+      <div className={classes.inviteTitles}>
         <Title title="Welcome to Chat Buddies!" fontSize="2.5rem" />
         <Title fontSize="1rem" title="Please complete the signup to continue!" fontWeight="normal" />
       </div>
-      <form className={classes.signup} onSubmit={handleOnClick}>
+      <form className={classes.inviteSignup} onSubmit={handleOnClick}>
         <TextInput placeholder="Username..." value={userName} onChange={userNameOnChange} />
         {errors.userName && <ErrorMessage message="*Must contain letters & numbers (optional) only!" />}
         <TextInput placeholder="Email..." value={email} onChange={emailOnChange} />
@@ -45,7 +44,7 @@ const Invite = () => {
         <Button title="Create User" onClick={handleOnClick} />
         {errors.signup && <ErrorMessage message="*Something went wrong, please try again later :(" />}
       </form>
-    </Page>
+    </div>
   )
 }
 

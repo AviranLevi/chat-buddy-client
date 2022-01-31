@@ -1,7 +1,7 @@
 import { createUseStyles } from 'react-jss'
 
 export default createUseStyles((theme) => ({
-  signupPage: {
+  invite: {
     display: 'grid',
     placeItems: 'center',
     width: 'calc(100% - 2rem)',
@@ -21,13 +21,13 @@ export default createUseStyles((theme) => ({
     '-webkit-mask-image': 'linear-gradient(to right, transparent, #fff, transparent)',
   },
 
-  signupPageTitles: {
+  inviteTitles: {
     display: 'grid',
     placeItems: 'center',
     gap: '1rem',
   },
 
-  signup: {
+  inviteSignup: {
     display: 'grid',
     gap: '1rem',
     alignSelf: 'start',

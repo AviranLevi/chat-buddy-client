@@ -30,6 +30,7 @@ export default createUseStyles((theme) => ({
   messagesWrapper: {
     display: 'grid',
     alignItems: 'end',
+    height: 'calc(100% - 2rem)',
     maxHeight: 'calc(78.5vh - 2rem)',
     width: 'calc(100% - 2rem)',
     overflow: 'scroll',

@@ -24,4 +24,12 @@ export const getRoomsByUser = () => (dispatch, getState) => {
     .catch((err) => console.log(err))
 }
 
-export const updateUser = (id, userName, email) => (dispatch) => {}
+export const updateUser = (id, userName, email) => (dispatch) => {
+  api
+    .updateUser(id, { userName, email })
+    .then((res) => {
+      localStorage.setItem('userId', id)
+      window.location.reload()
+    })
+    .catch((err) => console.log(err))
+}
