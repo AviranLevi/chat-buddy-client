@@ -7,6 +7,8 @@ const initialState = {
   roomListIsLoading: true,
   toggleRoomInfo: false,
   toogleRoomInfoAnimation: false,
+  roomSearchValue: '',
+  roomSearchResults: [],
 }
 
 const reducer = (state = initialState, action) => {
@@ -28,6 +30,12 @@ const reducer = (state = initialState, action) => {
 
     case types.TOGGLE_ROOM_INFO_ANIMATION:
       return { ...state, toogleRoomInfoAnimation: action.payload }
+
+    case types.ROOM_SEARCH_ON_CHANGE:
+      return { ...state, roomSearchValue: action.payload }
+
+    case types.ROOM_SEARCH_RESULTS:
+      return { ...state, roomSearchResults: action.payload }
 
     default:
       return state

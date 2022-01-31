@@ -1,7 +1,5 @@
 import { createUseStyles } from 'react-jss'
 
-const animationTimeout = (data) => setTimeout(() => data, 1000)
-
 export default createUseStyles((theme) => ({
   home: {
     display: 'flex',

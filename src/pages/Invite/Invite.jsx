@@ -6,7 +6,6 @@ import TextInput from '../../components/TextInput'
 import Button from '../../components/Button'
 import ErrorMessage from '../../components/ErrorMessage'
 import * as actions from '../../stores/actions'
-import Page from '../../components/Page'
 import useStyles from './Invite.css'
 import { useEffect } from 'react'
 

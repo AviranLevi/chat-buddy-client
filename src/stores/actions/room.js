@@ -24,7 +24,6 @@ export const getRoomByUniqueName = (name) => (dispatch) => {
       if (res.error) {
         dispatch(roomNotFound(true))
       } else {
-        console.log(res)
         dispatch(roomNotFound(false))
         const { _id } = res
         dispatch({ type: types.GET_ROOM, payload: { id: _id, ...res } })

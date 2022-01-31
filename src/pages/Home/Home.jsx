@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { useLocation, useHistory } from 'react-router-dom'
+import { useLocation } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import RoomChat from './RoomChat'
 import Profile from './Profile'
@@ -8,13 +8,12 @@ import CreateRoomPopup from './CreateRoomPopup'
 import MaxChat from './MaxChat'
 import RoomInfo from './RoomInfo'
 import Page from '../../components/Page'
-import * as actions from '../../stores/actions'
 import useStyles from './Home.css'
 import RoomNotFound from './RoomNotFound'
+import * as actions from '../../stores/actions'
 
 const Home = () => {
   const dispatch = useDispatch()
-  const history = useHistory()
   const { pathname } = useLocation()
   const { features, room } = useSelector((state) => state)
   const classes = useStyles({ features })

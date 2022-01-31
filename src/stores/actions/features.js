@@ -42,3 +42,19 @@ export const toggleRoomInfo = (bool) => (dispatch) => {
     }, 1000)
   }
 }
+
+export const roomSearchOnChange = (value) => ({
+  type: types.ROOM_SEARCH_ON_CHANGE,
+  payload: value,
+})
+
+export const searchRoom = (value) => (dispatch, getState) => {
+  const { rooms } = getState().user
+  const searchValue = value.toLowerCase()
+  const results = rooms.filter(({ name }) => name.toLowerCase().includes(searchValue))
+
+  dispatch({
+    type: types.ROOM_SEARCH_RESULTS,
+    payload: results,
+  })
+}

@@ -5,7 +5,6 @@ const initialState = {
   userName: '',
   email: '',
   rooms: [],
-  roomSearchResults: [],
 }
 
 const reducer = (state = initialState, action) => {

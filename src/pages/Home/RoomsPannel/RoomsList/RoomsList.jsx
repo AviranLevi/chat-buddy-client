@@ -12,14 +12,14 @@ const RoomsList = () => {
   const dispatch = useDispatch()
   const history = useHistory()
   const { user, features, room } = useSelector((state) => state)
-  const { roomListIsLoading } = features
+  const { roomListIsLoading, roomSearchValue, roomSearchResults } = features
   const { id: userId, rooms } = user
   const { name: currentRoom } = room
 
   const talWithMax = () => history.push('/max')
 
   useEffect(() => {
-    //get rooms
+    //get rooms for user
     if (userId) {
       dispatch(actions.getRoomsByUser(userId))
     }
@@ -31,11 +31,17 @@ const RoomsList = () => {
         Max 🤖
       </div>
 
-      {!roomListIsLoading && rooms && rooms.length > 0 ? (
-        rooms.map((room) => <Room key={room._id} room={room} currentRoom={currentRoom} />)
-      ) : (
-        <NothingToDisplay />
-      )}
+      {!roomListIsLoading &&
+        roomSearchResults.length > 0 &&
+        roomSearchResults.map((room) => <Room key={room._id} room={room} currentRoom={currentRoom} />)}
+
+      {!roomListIsLoading &&
+        !roomSearchValue &&
+        !roomSearchResults.length &&
+        rooms.length > 0 &&
+        rooms.map((room) => <Room key={room._id} room={room} currentRoom={currentRoom} />)}
+
+      {!rooms.length || (!roomSearchResults.length && roomSearchValue && <NothingToDisplay />)}
 
       {roomListIsLoading && <CircleSpinner />}
     </div>
