@@ -12,6 +12,11 @@ export default createUseStyles((theme) => ({
     borderRadius: '25px',
     justifySelf: 'start',
     transition: 'all ease-in-out .5s',
-    gridTemplateColumns: '25% 55% 20%', //'25% 75%'),
+  },
+
+  [theme.breakpoints.xs]: {
+    home: {
+      flexDirection: 'column',
+    },
   },
 }))

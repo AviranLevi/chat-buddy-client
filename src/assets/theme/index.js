@@ -22,6 +22,14 @@ const theme = {
     secondary: '#B6C8EB',
     light: '#fff',
   },
+
+  breakpoints: {
+    xs: '@media (max-width: 320px)',
+    sm: '@media (max-width: 481px)',
+    md: '@media (max-width: 769px)',
+    lg: '@media (max-width: 1025px)',
+    xl: '@media (max-width: 1201px)',
+  },
 }
 
 export default theme
