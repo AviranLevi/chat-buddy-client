@@ -10,6 +10,7 @@ import RoomInfo from './RoomInfo'
 import Page from '../../components/Page'
 import * as actions from '../../stores/actions'
 import useStyles from './Home.css'
+import RoomNotFound from './RoomNotFound'
 
 const Home = () => {
   const dispatch = useDispatch()
@@ -19,7 +20,7 @@ const Home = () => {
   const classes = useStyles({ features })
 
   const roomName = pathname.split('/')[1]
-  const max = pathname.split('/')[1] === 'max'
+  const max = roomName === 'max'
   const { errors } = room
 
   useEffect(() => {
@@ -28,19 +29,14 @@ const Home = () => {
     }
   }, [roomName])
 
-  useEffect(() => {
-    if (errors.roomNotFound) {
-      history.push('/')
-    }
-  }, [errors.roomNotFound])
-
   return (
     <Page className={classes.home}>
       {features.toggleRoomList && <RoomsPannel />}
       {features.toggleProfile && <Profile />}
 
       {max && <MaxChat />}
-      {!max && roomName && <RoomChat location={pathname} />}
+      {!errors.roomNotFound && !max && roomName && <RoomChat location={pathname} />}
+      {errors.roomNotFound && <RoomNotFound />}
 
       {features.toggleRoomInfo && <RoomInfo />}
       {features.createRoomTogglePopup && <CreateRoomPopup />}

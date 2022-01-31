@@ -1,21 +1,10 @@
 import React from 'react'
-import Lottie from 'react-lottie'
+import LottieAnimation from '../LottieAnimation'
 import TypingJSON from '../../assets/lottie/typing.json'
 
-const Typing = ({ height = 100, width = 100, scrollRef, className = '' }) => (
+const Typing = ({ scrollRef, className = '' }) => (
   <div ref={scrollRef} className={className}>
-    <Lottie
-      options={{
-        loop: true,
-        autoplay: true,
-        animationData: TypingJSON,
-        rendererSettings: {
-          preserveAspectRatio: 'xMidYMid slice',
-        },
-      }}
-      height={height}
-      width={width}
-    />
+    <LottieAnimation animationData={TypingJSON} />
   </div>
 )
 

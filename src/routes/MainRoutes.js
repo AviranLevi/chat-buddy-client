@@ -8,11 +8,8 @@ const MainRoutes = () => (
   <Router>
     <Navbar />
     <Switch>
-      <Route path='/:chat?'>
+      <Route path="/:chat?">
         <Home />
-      </Route>
-      <Route path='/*'>
-        <Redirect to='/' />
       </Route>
     </Switch>
   </Router>

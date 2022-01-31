@@ -7,16 +7,12 @@ import Invite from '../pages/Invite'
 const SignupRoutes = () => (
   <Router>
     <Switch>
-      <Route exact path="/signup">
+      <Route exact path="/">
         <Signup />
       </Route>
 
       <Route exact path="/invite/:userId">
         <Invite />
-      </Route>
-
-      <Route path="/*">
-        <Redirect exact to="/signup" />
       </Route>
     </Switch>
   </Router>
