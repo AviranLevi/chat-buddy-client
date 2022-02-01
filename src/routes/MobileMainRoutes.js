@@ -6,7 +6,6 @@ import MaxChat from '../pages/Home/MaxChat'
 import RoomChat from '../pages/Home/RoomChat'
 import RoomInfo from '../pages/Home/RoomInfo'
 import RoomsPannel from '../pages/Home/RoomsPannel'
-import Navbar from '../pages/Navbar'
 
 const MobileMainRoutes = () => (
   <Router>

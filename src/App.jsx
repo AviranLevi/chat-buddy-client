@@ -36,7 +36,7 @@ const App = () => {
 
   const mainRoutes = isMobile ? <MobileMainRoutes /> : <MainRoutes />
 
-  return <div className={classes.app}>{user.id ? mainRoutes : <SignupRoutes />}</div>
+  return <div className={classes.app}>{!user.id ? mainRoutes : <SignupRoutes />}</div>
 }
 
 export default App

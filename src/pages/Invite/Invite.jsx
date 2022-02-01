@@ -8,12 +8,15 @@ import ErrorMessage from '../../components/ErrorMessage'
 import * as actions from '../../stores/actions'
 import useStyles from './Invite.css'
 import { useEffect } from 'react'
+import Logo from '../../components/Logo'
 
 const Invite = () => {
   const classes = useStyles()
   const dispatch = useDispatch()
   const { pathname } = useLocation()
-  const { userName, email, errors } = useSelector((state) => state.signup)
+  const { signup, features } = useSelector((state) => state)
+  const { userName, email, errors } = signup
+  const { logoAnimation } = features
 
   const userNameOnChange = (e) => dispatch(actions.userNameOnChange(e.target.value))
   const emailOnChange = (e) => dispatch(actions.emailOnChange(e.target.value))
@@ -28,8 +31,19 @@ const Invite = () => {
     dispatch(actions.getUserFromInvite(userId))
   }, [])
 
+  const activateLogoAniamtion = () => dispatch(actions.toggleLogoAnimation(true))
+
   return (
     <div className={classes.invite}>
+      <div className={classes.logo} onMouseOver={activateLogoAniamtion}>
+        <Logo
+          height={150}
+          width={150}
+          playAnimation={logoAnimation}
+          toggleLogoAnimation={(bool) => dispatch(actions.toggleLogoAnimation(bool))}
+        />
+      </div>
+
       <div className={classes.inviteTitles}>
         <Title title="Welcome to Chat Buddies!" fontSize="2.5rem" />
         <Title fontSize="1rem" title="Please complete the signup to continue!" fontWeight="normal" />

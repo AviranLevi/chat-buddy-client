@@ -1,15 +1,16 @@
 import * as types from '../types'
 
 const initialState = {
-  createRoomTogglePopup: false,
+  isMobile: false,
   toggleProfile: false,
   toggleRoomList: true,
-  roomListIsLoading: true,
-  toggleRoomInfo: false,
-  toogleRoomInfoAnimation: false,
+  logoAnimation: true,
   roomSearchValue: '',
   roomSearchResults: [],
-  isMobile: false,
+  toggleRoomInfo: false,
+  roomListIsLoading: true,
+  createRoomTogglePopup: false,
+  toogleRoomInfoAnimation: false,
 }
 
 const reducer = (state = initialState, action) => {
@@ -40,6 +41,9 @@ const reducer = (state = initialState, action) => {
 
     case types.IS_MOBILE:
       return { ...state, isMobile: action.payload }
+
+    case types.LOGO_ANIMATION:
+      return { ...state, logoAnimation: action.payload }
 
     default:
       return state

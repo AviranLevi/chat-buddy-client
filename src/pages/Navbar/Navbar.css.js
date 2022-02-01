@@ -11,6 +11,11 @@ export default createUseStyles((theme) => ({
     fontSize: '1.5rem',
   },
 
+  logo: {
+    background: '#ededed30',
+    borderRadius: '100%',
+  },
+
   navbarIcon: {
     borderRadius: '50%',
     padding: '1rem',
@@ -21,12 +26,6 @@ export default createUseStyles((theme) => ({
     color: '#fff',
     '&:hover': {
       background: '#ededed10',
-    },
-  },
-
-  [theme.breakpoints.md]: {
-    navbar: {
-      // display: 'none',
     },
   },
 }))

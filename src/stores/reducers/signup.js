@@ -1,12 +1,12 @@
 import * as types from '../types'
 
 const initialState = {
-  userName: '',
   email: '',
+  userName: '',
   errors: {
-    userName: false,
     email: false,
     signup: false,
+    userName: false,
   },
 }
 

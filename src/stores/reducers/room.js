@@ -2,12 +2,12 @@ import * as types from '../types'
 
 const initialState = {
   id: '',
-  users: [],
   name: '',
-  uniqueName: '',
-  admin: '',
   type: '',
+  admin: '',
+  users: [],
   messages: [],
+  uniqueName: '',
   errors: {
     roomNotFound: false,
   },

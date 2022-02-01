@@ -63,3 +63,8 @@ export const mobileViewStatus = (bool) => ({
   type: types.IS_MOBILE,
   payload: bool,
 })
+
+export const toggleLogoAnimation = (bool) => ({
+  type: types.LOGO_ANIMATION,
+  payload: bool,
+})

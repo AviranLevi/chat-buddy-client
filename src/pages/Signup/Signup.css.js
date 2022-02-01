@@ -38,6 +38,12 @@ export default createUseStyles((theme) => ({
     justifySelf: 'start',
   },
 
+  logo: {
+    position: 'absolute',
+    top: '2%',
+    left: '4%',
+  },
+
   [theme.breakpoints.lg]: {
     signup: {
       width: '60%',
