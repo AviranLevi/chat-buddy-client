@@ -4,7 +4,7 @@ import { socketEndPoint } from '../config'
 let socket
 
 export const initiateSocketConnection = () => {
-  socket = io(socketEndPoint)
+  socket = io(socketEndPoint, { secure: true })
 }
 
 export const disconnectSocket = () => {
