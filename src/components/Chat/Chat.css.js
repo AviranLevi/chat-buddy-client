@@ -78,7 +78,6 @@ export default createUseStyles((theme) => ({
 
   menuBtn: {
     color: theme.background.primary,
-    fontSize: '1rem',
     position: 'absolute',
     top: 'calc(50% - .75rem)',
     left: '5%',
