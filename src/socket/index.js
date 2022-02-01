@@ -3,7 +3,7 @@ import { io } from 'socket.io-client'
 let socket
 
 export const initiateSocketConnection = () => {
-  socket = io()
+  socket = io('https://chat-buddies-service.herokuapp.com/')
 }
 
 export const disconnectSocket = () => {
