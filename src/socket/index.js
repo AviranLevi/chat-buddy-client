@@ -1,9 +1,12 @@
-import { io } from 'socket.io-client'
+import io from 'socket.io-client'
+import { socketEndPoint } from '../config'
 
 let socket
 
+const endpoint = socketEndPoint || 'ws://localhost:3030'
+
 export const initiateSocketConnection = () => {
-  socket = io('/')
+  socket = io(endpoint)
 }
 
 export const disconnectSocket = () => {
