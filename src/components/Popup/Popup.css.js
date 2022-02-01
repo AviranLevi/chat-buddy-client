@@ -42,4 +42,17 @@ export default createUseStyles((theme) => ({
       color: theme.button.background.primary,
     },
   },
+
+  [theme.breakpoints.md]: {
+    popupWrapper: {
+      height: '100vh ',
+      width: 'calc(100vw - 2rem) ',
+      padding: '1rem',
+    },
+
+    closeBtn: {
+      top: '1.5rem',
+      left: '2rem',
+    },
+  },
 }))

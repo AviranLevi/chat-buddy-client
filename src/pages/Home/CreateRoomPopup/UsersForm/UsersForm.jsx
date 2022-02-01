@@ -20,7 +20,11 @@ const UsersForm = ({ users, addUserValue, addUserOnChange, addToUsers, removeUse
             onChange={addUserOnChange}
             placeholder="Invite by email.."
           />
-          <Button title="+" onClick={addToUsers} />
+          <Button
+            className={classes.addUserBtn}
+            title={<i className="fa-solid fa-user-plus"></i>}
+            onClick={addToUsers}
+          />
         </form>
         {usersValueErr && <ErrorMessage message={'*Please insert valid email!'} />}
       </div>

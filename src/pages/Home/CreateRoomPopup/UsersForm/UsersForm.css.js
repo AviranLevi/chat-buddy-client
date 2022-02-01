@@ -13,10 +13,16 @@ export default createUseStyles((theme) => ({
   },
   roomUsersInput: {
     border: '1px solid #ededed',
+    width: '100%',
   },
 
   inviteUsersDisplay: {
     display: 'flex',
     gap: '.2rem',
+    flexWrap: 'wrap',
+  },
+
+  addUserBtn: {
+    padding: '1rem',
   },
 }))

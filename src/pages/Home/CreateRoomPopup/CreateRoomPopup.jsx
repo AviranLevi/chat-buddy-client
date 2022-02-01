@@ -10,12 +10,15 @@ import * as utils from '../../../utils'
 import UsersForm from './UsersForm'
 import TypeSelection from './TypeSelection'
 import RoomName from './RoomName'
+import { useHistory } from 'react-router-dom'
 
 const CreateRoomPopup = () => {
   const classes = useStyles()
   const dispatch = useDispatch()
-  const { user } = useSelector((state) => state)
+  const history = useHistory()
+  const { user, features } = useSelector((state) => state)
   const { email } = user
+  const { isMobile } = features
   //room values
   const [name, setName] = useState('')
   const [type, setType] = useState(roomTypes.private)
@@ -59,8 +62,13 @@ const CreateRoomPopup = () => {
 
   const addUserOnChange = (e) => setAddUserValue(e.target.value)
 
-  const closePopup = () => dispatch(actions.createRoomTogglePopup(false))
-
+  const closePopup = () => {
+    if (isMobile) {
+      history.push('/')
+    } else {
+      dispatch(actions.createRoomTogglePopup(false))
+    }
+  }
   return (
     <Popup closeOnClick={closePopup} className={classes.createRoomPopupWrapper}>
       <div className={classes.createRoomPopup}>

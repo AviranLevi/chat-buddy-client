@@ -29,4 +29,10 @@ export default createUseStyles((theme) => ({
     border: `1px solid ${theme.background.primary}`,
     textTransform: 'capitalize',
   },
+
+  [theme.breakpoints.md]: {
+    createRoomPopupTitle: {
+      margin: '2rem auto',
+    },
+  },
 }))
