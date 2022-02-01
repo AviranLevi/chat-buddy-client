@@ -18,8 +18,10 @@ export const getRoomsByUser = () => (dispatch, getState) => {
   api
     .getRooms(id)
     .then((res) => {
-      dispatch(roomListIsLoading(false))
-      dispatch({ type: types.GET_ROOMS, payload: res })
+      if (res) {
+        dispatch({ type: types.GET_ROOMS, payload: res })
+        dispatch(roomListIsLoading(false))
+      }
     })
     .catch((err) => console.log(err))
 }

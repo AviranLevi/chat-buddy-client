@@ -9,10 +9,14 @@ export const roomNotFound = (bool) => ({
 
 export const createRoom = (name, type, users) => (dispatch, getState) => {
   const { id, userName } = getState().user
+
   api
     .createRoom(name, type, users, id, userName)
     .then((res) => {
-      dispatch(getRoomsByUser())
+      if (res) {
+        console.log(res)
+        dispatch(getRoomsByUser())
+      }
     })
     .catch((err) => console.log(err))
 }
@@ -36,12 +40,6 @@ export const getRoomMessagesFromSocket = (messages) => ({
   type: types.GET_ROOM_MESSAGES,
   payload: messages,
 })
-
-export const inviteUserToRoom = (roomId, userId) => (dispatch) => {}
-
-export const updateRoom = (roomId, newDate) => (dispatch) => {}
-
-export const removeUserFromRoom = (roomId, userId) => (dispatch) => {}
 
 export const deleteRoom = (roomId) => (dispatch) => {
   api

@@ -74,16 +74,19 @@ const CreateRoomPopup = () => {
       <div className={classes.createRoomPopup}>
         <Title title="Create New Chat" fontSize="2rem" className={classes.createRoomPopupTitle} />
         <RoomName roomName={name} roomNameOnChange={roomNameOnChange} err={nameErr} />
-        <UsersForm
-          users={users}
-          addToUsers={addToUsers}
-          addUserValue={addUserValue}
-          addUserOnChange={addUserOnChange}
-          removeUserOnClick={removeUser}
-          usersValueErr={emailValidationErr}
-        />
 
         <TypeSelection type={type} setPrivate={setPrivate} setPublic={setPublic} />
+
+        {type === roomTypes.private && (
+          <UsersForm
+            users={users}
+            addToUsers={addToUsers}
+            addUserValue={addUserValue}
+            addUserOnChange={addUserOnChange}
+            removeUserOnClick={removeUser}
+            usersValueErr={emailValidationErr}
+          />
+        )}
 
         <div className={classes.formSelection}>
           <Button title="Create" className={classes.createBtn} onClick={createRoomOnClick} />
