@@ -37,4 +37,16 @@ export default createUseStyles((theme) => ({
   signupTitle: {
     justifySelf: 'start',
   },
+
+  [theme.breakpoints.lg]: {
+    signup: {
+      width: '60%',
+    },
+  },
+
+  [theme.breakpoints.sm]: {
+    signup: {
+      width: '80%',
+    },
+  },
 }))

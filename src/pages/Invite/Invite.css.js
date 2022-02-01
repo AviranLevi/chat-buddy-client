@@ -25,6 +25,7 @@ export default createUseStyles((theme) => ({
     display: 'grid',
     placeItems: 'center',
     gap: '1rem',
+    textAlign: 'center',
   },
 
   inviteSignup: {
@@ -36,5 +37,20 @@ export default createUseStyles((theme) => ({
 
   signupTitle: {
     justifySelf: 'start',
+  },
+
+  [theme.breakpoints.lg]: {
+    inviteTitles: {
+      margin: '1rem',
+    },
+    inviteSignup: {
+      width: '60%',
+    },
+  },
+
+  [theme.breakpoints.sm]: {
+    inviteSignup: {
+      width: '80%',
+    },
   },
 }))
