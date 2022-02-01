@@ -9,6 +9,7 @@ export default createUseStyles((theme) => ({
     alignItems: 'center',
     justifyContent: 'space-between',
     cursor: 'pointer',
+    zIndex: '20',
 
     '&:hover': {
       background: '#ededed',
@@ -25,5 +26,17 @@ export default createUseStyles((theme) => ({
   createRoomTitle: {
     background: 'none',
     margin: '0 auto',
+  },
+
+  [theme.breakpoints.md]: {
+    createRoom: {
+      color: theme.text.light,
+    },
+
+    createRoomIcon: {
+      color: theme.background.light,
+      background: 'none',
+      padding: '1rem .5rem',
+    },
   },
 }))

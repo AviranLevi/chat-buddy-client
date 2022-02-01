@@ -9,6 +9,7 @@ export default createUseStyles((theme) => ({
     borderRadius: '25px',
     alignItems: 'center',
     justifyContent: 'space-around',
+    zIndex: '20',
   },
 
   searchInput: {

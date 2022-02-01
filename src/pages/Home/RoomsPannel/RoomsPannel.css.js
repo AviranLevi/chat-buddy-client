@@ -13,6 +13,7 @@ export default createUseStyles((theme) => ({
   },
   roomsPannelTitle: {
     padding: '2rem 0 1rem',
+    zIndex: '20',
   },
 
   roomsWrapper: {
@@ -21,9 +22,23 @@ export default createUseStyles((theme) => ({
     overFlow: 'hidden',
   },
 
+  headerMobileBackground: {
+    position: 'absolute',
+    top: '0',
+    left: '0',
+    height: '225px',
+    width: '100vw',
+    background: theme.background.primary,
+    borderBottomRightRadius: '100%',
+  },
+
   [theme.breakpoints.md]: {
     roomsPannel: {
       borderRadius: '0',
+    },
+
+    roomsPannelTitle: {
+      color: theme.text.light,
     },
   },
 }))

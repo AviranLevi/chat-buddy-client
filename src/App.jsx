@@ -26,7 +26,7 @@ const App = () => {
   }, [])
 
   useEffect(() => {
-    const isMobile = screenWidth <= 768
+    const isMobile = screenWidth <= 769
     if (isMobile) {
       dispatch(actions.mobileViewStatus(true))
     } else {
@@ -36,7 +36,7 @@ const App = () => {
 
   const mainRoutes = isMobile ? <MobileMainRoutes /> : <MainRoutes />
 
-  return <div className={classes.app}>{!user.id ? mainRoutes : <SignupRoutes />}</div>
+  return <div className={classes.app}>{user.id ? mainRoutes : <SignupRoutes />}</div>
 }
 
 export default App

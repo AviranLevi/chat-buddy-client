@@ -13,8 +13,15 @@ export default createUseStyles((theme) => ({
     gridTemplateColumns: '5% 95%',
   },
 
+  [theme.breakpoints.lg]: {
+    app: {
+      gridTemplateColumns: '10% 90%',
+    },
+  },
+
   [theme.breakpoints.md]: {
     app: {
+      maxHeight: '100vh',
       gridTemplateColumns: 'unset',
     },
   },

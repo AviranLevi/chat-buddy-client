@@ -14,8 +14,9 @@ const RoomInfo = () => {
   const { toogleRoomInfoAnimation, isMobile } = features
 
   const displayAnimation = !isMobile && (toogleRoomInfoAnimation ? animations.expand : animations.collapse)
+  const mobileFadeIn = isMobile && animations.fadeIn
   return (
-    <div className={`${classes.roomInfo} ${displayAnimation} `}>
+    <div className={`${classes.roomInfo} ${displayAnimation} ${mobileFadeIn} `}>
       {isMobile && (
         <Link to={`/${uniqueName}`} className={classes.goBackBtn}>
           <i className="fa-solid fa-arrow-left-long"></i>

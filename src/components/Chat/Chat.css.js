@@ -86,6 +86,14 @@ export default createUseStyles((theme) => ({
   },
 
   [theme.breakpoints.md]: {
+    chat: {
+      gridTemplateRows: '10% 80% 10%',
+    },
+
+    messagesWrapper: {
+      maxHeight: 'calc(80vh - 2rem)',
+    },
+
     userMessageInput: {
       gridTemplateColumns: '80% 20%',
     },
