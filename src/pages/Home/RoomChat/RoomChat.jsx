@@ -71,7 +71,6 @@ const RoomChat = () => {
   useEffect(() => {
     socket.recivedTyping((data) => {
       const { userName: typingUserName } = data
-      console.log({ typingUserName })
       if (typingUserName !== userName) {
         setTyping(true)
       }
@@ -79,8 +78,6 @@ const RoomChat = () => {
 
     socket.recivedStopTyping((data) => {
       const { userName: typingUserName } = data
-      console.log('stop', { typingUserName })
-
       if (typingUserName !== userName) {
         setTyping(false)
       }
