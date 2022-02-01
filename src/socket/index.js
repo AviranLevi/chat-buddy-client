@@ -3,7 +3,7 @@ import { io } from 'socket.io-client'
 let socket
 
 export const initiateSocketConnection = () => {
-  socket = io('ws://localhost:8900')
+  socket = io()
 }
 
 export const disconnectSocket = () => {
