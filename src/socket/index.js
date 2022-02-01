@@ -3,10 +3,8 @@ import { socketEndPoint } from '../config'
 
 let socket
 
-const endpoint = socketEndPoint || 'ws://localhost:3030'
-
 export const initiateSocketConnection = () => {
-  socket = io(endpoint)
+  socket = io(socketEndPoint)
 }
 
 export const disconnectSocket = () => {
