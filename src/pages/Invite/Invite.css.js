@@ -39,12 +39,22 @@ export default createUseStyles((theme) => ({
     justifySelf: 'start',
   },
 
+  logo: {
+    position: 'absolute',
+    top: '2%',
+    left: '4%',
+  },
+
   [theme.breakpoints.lg]: {
     inviteTitles: {
       margin: '1rem',
     },
     inviteSignup: {
       width: '60%',
+    },
+
+    logo: {
+      left: 'calc(50% - 80px)',
     },
   },
 

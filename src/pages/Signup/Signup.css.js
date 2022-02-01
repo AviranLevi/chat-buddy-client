@@ -48,6 +48,10 @@ export default createUseStyles((theme) => ({
     signup: {
       width: '60%',
     },
+
+    logo: {
+      left: 'calc(50% - 80px)',
+    },
   },
 
   [theme.breakpoints.sm]: {
