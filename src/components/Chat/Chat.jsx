@@ -6,6 +6,7 @@ import Title from '../Title'
 import NothingToDisplay from '../NothingToDisplay'
 import useStyles from './Chat.css'
 import Typing from '../Typing'
+import { Link } from 'react-router-dom'
 
 const Chat = ({
   roomTitle,
@@ -18,6 +19,7 @@ const Chat = ({
   onChange,
   onClick,
   className = '',
+  isMobile = false,
 }) => {
   const classes = useStyles()
 
@@ -29,11 +31,19 @@ const Chat = ({
   return (
     <div className={`${classes.chat} ${className}`}>
       <div className={classes.chatRoomTitle}>
+        {isMobile && (
+          <Link to="/" className={classes.menuBtn}>
+            <i className="fa-solid fa-bars"></i>{' '}
+          </Link>
+        )}
+
         <Title title={roomTitle} />
 
-        <div className={classes.roomInfoBtn} onClick={toggleRoomInfo}>
-          <i class="fa-solid fa-ellipsis-vertical"></i>
-        </div>
+        {toggleRoomInfo && (
+          <div className={classes.roomInfoBtn} onClick={toggleRoomInfo}>
+            <i class="fa-solid fa-ellipsis-vertical"></i>
+          </div>
+        )}
       </div>
       <div className={classes.messagesWrapper}>
         {messages && messages.length > 0 ? (

@@ -9,6 +9,7 @@ export default createUseStyles((theme) => ({
     width: '30%',
     gap: '1rem',
     borderLeft: '1px solid #ededed',
+    position: 'relative',
   },
   roomTitle: {
     padding: '1rem',
@@ -24,5 +25,26 @@ export default createUseStyles((theme) => ({
 
   roomUserName: {
     textTransform: 'capitalize',
+  },
+
+  goBackBtn: {
+    position: 'absolute',
+    top: '2.5rem',
+    left: '2.5rem',
+    fontSize: '2rem',
+    textDecoration: 'none',
+    color: theme.text.primary,
+  },
+
+  [theme.breakpoints.md]: {
+    roomInfo: {
+      background: theme.background.secondary,
+      width: '100%',
+    },
+
+    roomTitle: {
+      fontSize: '3rem',
+      padding: '2rem 1rem',
+    },
   },
 }))

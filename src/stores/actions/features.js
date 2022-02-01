@@ -58,3 +58,8 @@ export const searchRoom = (value) => (dispatch, getState) => {
     payload: results,
   })
 }
+
+export const mobileViewStatus = (bool) => ({
+  type: types.IS_MOBILE,
+  payload: bool,
+})

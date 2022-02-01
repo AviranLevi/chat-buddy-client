@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import Title from '../Title'
 import useStyles from './Room.css'
 
-const Room = ({ key, room, currentRoom }) => {
+const Room = ({ room, currentRoom }) => {
   const { name, type, uniqueName } = room
   const classes = useStyles({ currentRoom, name })
 

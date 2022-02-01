@@ -14,9 +14,10 @@ export default createUseStyles((theme) => ({
     transition: 'all ease-in-out .5s',
   },
 
-  [theme.breakpoints.xs]: {
+  [theme.breakpoints.md]: {
     home: {
       flexDirection: 'column',
+      justifySelf: 'center',
     },
   },
 }))

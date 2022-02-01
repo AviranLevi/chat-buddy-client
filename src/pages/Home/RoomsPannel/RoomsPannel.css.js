@@ -20,4 +20,10 @@ export default createUseStyles((theme) => ({
     padding: '0 1rem',
     overFlow: 'hidden',
   },
+
+  [theme.breakpoints.md]: {
+    roomsPannel: {
+      borderRadius: '0',
+    },
+  },
 }))

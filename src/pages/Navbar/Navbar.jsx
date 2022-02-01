@@ -1,11 +1,13 @@
 import React from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import useStyles from './Navbar.css'
 import * as actions from '../../stores/actions'
 
 const Navbar = () => {
   const classes = useStyles()
   const dispatch = useDispatch()
+  // const { features } = useSelector((state) => state)
+  // const { isMobile } = features
 
   const showProfileOnClick = () => {
     dispatch(actions.toggleRoomList(false))
@@ -19,11 +21,11 @@ const Navbar = () => {
   return (
     <div className={classes.navbar}>
       <div className={classes.navbarIcon} onClick={showProfileOnClick}>
-        <i className='fa-solid fa-user'></i>
+        <i className="fa-solid fa-user"></i>
       </div>
 
       <div className={classes.navbarIcon} onClick={showRoomListOnClick}>
-        <i className='fa-solid fa-comment'></i>
+        <i className="fa-solid fa-comment"></i>
       </div>
     </div>
   )

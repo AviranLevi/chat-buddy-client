@@ -4,17 +4,23 @@ import * as socket from '../../../socket'
 import * as actions from '../../../stores/actions'
 import useStyles from './RoomChat.css'
 import Chat from '../../../components/Chat/Chat'
+import { useLocation, useHistory } from 'react-router-dom'
 
-const RoomChat = ({ location }) => {
+const RoomChat = () => {
   const classes = useStyles()
   const dispatch = useDispatch()
+  const { pathname } = useLocation()
+  const history = useHistory()
+
   const { user, room, features } = useSelector((state) => state)
   const [messageValue, setMessageValue] = useState('')
   const [typing, setTyping] = useState(false)
   const scrollRef = useRef()
 
+  const { isMobile } = features
   const { id: userId, userName } = user
   const { id: roomId, name, messages, uniqueName } = room
+  const roomPathName = pathname.split('/')[1]
 
   let timeout
 
@@ -42,7 +48,13 @@ const RoomChat = ({ location }) => {
     socket.sendMessage(socketData, user)
   }
 
-  const toggleRoomInfoOnClick = () => dispatch(actions.toggleRoomInfo(!features.toggleRoomInfo))
+  const toggleRoomInfoOnClick = () => {
+    if (isMobile) {
+      history.push(`${roomPathName}/info`)
+    } else {
+      dispatch(actions.toggleRoomInfo(!features.toggleRoomInfo))
+    }
+  }
 
   useEffect(() => {
     socket.initiateSocketConnection()
@@ -52,8 +64,6 @@ const RoomChat = ({ location }) => {
   }, [])
 
   useEffect(() => {
-    const roomPathName = location.split('/')[1]
-
     socket.recivedMessages((data) => {
       const { updatedMessages, roomId: messageRoomId } = data
       if (roomId === messageRoomId && uniqueName === roomPathName) {
@@ -81,6 +91,10 @@ const RoomChat = ({ location }) => {
     })
   }, [])
 
+  useEffect(() => {
+    dispatch(actions.getRoomByUniqueName(roomPathName))
+  }, [roomPathName])
+
   return (
     <Chat
       roomTitle={name}
@@ -92,6 +106,7 @@ const RoomChat = ({ location }) => {
       onClick={handleOnClick}
       currentUser={user}
       toggleRoomInfo={toggleRoomInfoOnClick}
+      isMobile={isMobile}
     />
   )
 }

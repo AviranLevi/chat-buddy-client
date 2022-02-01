@@ -23,4 +23,10 @@ export default createUseStyles((theme) => ({
       background: '#ededed10',
     },
   },
+
+  [theme.breakpoints.md]: {
+    navbar: {
+      // display: 'none',
+    },
+  },
 }))

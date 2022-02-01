@@ -1,18 +1,19 @@
-import React, { useRef, useState, useEffect } from "react"
-import { useDispatch, useSelector } from "react-redux"
-import * as socket from "../../../socket"
-import * as actions from "../../../stores/actions"
-import * as utils from "../../../utils"
-import Chat from "../../../components/Chat/Chat"
-import useStyles from "./MaxChat.css"
+import React, { useRef, useState, useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import * as socket from '../../../socket'
+import * as actions from '../../../stores/actions'
+import * as utils from '../../../utils'
+import Chat from '../../../components/Chat/Chat'
+import useStyles from './MaxChat.css'
 
 const MaxChat = () => {
   const classes = useStyles()
-  const [messageValue, setMessageValues] = useState("")
+  const [messageValue, setMessageValues] = useState('')
   const [maxIsTyping, setMaxIsTyping] = useState(false)
   const dispatch = useDispatch()
-  const { user, max } = useSelector((state) => state)
+  const { user, max, features } = useSelector((state) => state)
   const { messages } = max
+  const { isMobile } = features
   const scrollRef = useRef()
 
   const handleOnClick = () => {
@@ -23,16 +24,14 @@ const MaxChat = () => {
     }
     dispatch(actions.pushToMaxChatMessages(data))
     socket.sendMessageToChatBot(messageValue)
-    setMessageValues("")
+    setMessageValues('')
   }
 
   useEffect(() => {
     socket.initiateSocketConnection()
     if (!messages.length) {
       socket.joinToChatBot(user)
-      socket.firstChatBotMessage((data) =>
-        dispatch(actions.pushToMaxChatMessages(data))
-      )
+      socket.firstChatBotMessage((data) => dispatch(actions.pushToMaxChatMessages(data)))
     }
     return () => {
       socket.disconnectSocket()
@@ -59,6 +58,7 @@ const MaxChat = () => {
       onChange={setMessageValues}
       onClick={handleOnClick}
       currentUser={user}
+      isMobile={isMobile}
     />
   )
 }

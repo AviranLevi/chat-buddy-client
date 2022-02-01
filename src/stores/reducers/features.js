@@ -9,6 +9,7 @@ const initialState = {
   toogleRoomInfoAnimation: false,
   roomSearchValue: '',
   roomSearchResults: [],
+  isMobile: false,
 }
 
 const reducer = (state = initialState, action) => {
@@ -36,6 +37,9 @@ const reducer = (state = initialState, action) => {
 
     case types.ROOM_SEARCH_RESULTS:
       return { ...state, roomSearchResults: action.payload }
+
+    case types.IS_MOBILE:
+      return { ...state, isMobile: action.payload }
 
     default:
       return state

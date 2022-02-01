@@ -12,4 +12,10 @@ export default createUseStyles((theme) => ({
     display: 'grid',
     gridTemplateColumns: '5% 95%',
   },
+
+  [theme.breakpoints.md]: {
+    app: {
+      gridTemplateColumns: 'unset',
+    },
+  },
 }))

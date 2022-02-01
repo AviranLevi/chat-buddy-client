@@ -7,6 +7,7 @@ export default createUseStyles((theme) => ({
     width: '100%',
     gridTemplateRows: '10% 83% 7%',
     placeItems: 'center',
+    background: theme.background.secondary,
   },
 
   chatRoomTitle: {
@@ -71,5 +72,28 @@ export default createUseStyles((theme) => ({
   sendBtn: {
     padding: '1.2rem',
     borderRadius: '100%',
+  },
+
+  menuBtn: {
+    color: theme.background.primary,
+    fontSize: '1rem',
+    position: 'absolute',
+    top: 'calc(50% - .75rem)',
+    left: '5%',
+    fontSize: '1.5rem',
+  },
+
+  [theme.breakpoints.md]: {
+    userMessageInput: {
+      gridTemplateColumns: '80% 20%',
+    },
+
+    sendBtn: {
+      padding: '.8rem',
+    },
+
+    roomInfoBtn: {
+      right: '5%',
+    },
   },
 }))
