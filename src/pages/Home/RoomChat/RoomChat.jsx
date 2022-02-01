@@ -1,10 +1,10 @@
 import React, { useRef, useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { useLocation, useHistory } from 'react-router-dom'
+import Chat from '../../../components/Chat/Chat'
+import useStyles from './RoomChat.css'
 import * as socket from '../../../socket'
 import * as actions from '../../../stores/actions'
-import useStyles from './RoomChat.css'
-import Chat from '../../../components/Chat/Chat'
-import { useLocation, useHistory } from 'react-router-dom'
 
 const RoomChat = () => {
   const classes = useStyles()
@@ -24,14 +24,10 @@ const RoomChat = () => {
 
   let timeout
 
-  const timeoutFunction = () => {
-    setTyping(false)
-    socket.userStopTyping({ userName, roomId })
-  }
+  const timeoutFunction = () => socket.userStopTyping({ userName, roomId })
 
   const messageValueOnChange = (value) => {
     socket.userIsTyping({ userName, roomId })
-    setTyping(true)
     setMessageValue(value)
     clearTimeout(timeout)
     timeout = setTimeout(timeoutFunction, 1000)

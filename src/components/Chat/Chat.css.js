@@ -29,7 +29,7 @@ export default createUseStyles((theme) => ({
   },
 
   messagesWrapper: {
-    display: 'grid',
+    display: 'flex',
     alignItems: 'end',
     height: 'calc(100% - 2rem)',
     maxHeight: 'calc(78.5vh - 2rem)',
@@ -41,6 +41,7 @@ export default createUseStyles((theme) => ({
     overflowX: 'hidden',
     marginRight: '.5rem',
     position: 'relative',
+    flexDirection: 'column',
 
     '&::-webkit-scrollbar-track': {
       width: '10px',
@@ -57,7 +58,8 @@ export default createUseStyles((theme) => ({
   },
 
   typing: {
-    justifySelf: 'start',
+    margin: 'auto auto 0  0',
+    alignSelf: 'flex-end',
   },
 
   userMessageInput: {
